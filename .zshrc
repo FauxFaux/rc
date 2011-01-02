@@ -53,7 +53,7 @@ alias -g ....='../../../'
 
 #[ Aliases ]###################################################################
 
-cdt () { cd $(mktemp -p /var/tmp -td $LOGNAME$(($(date +%y%m%d))).XX) }
+cdt () { BASE=/var/tmp/$LOGNAME$(($(date +%y%m%d))); i=0; while [ -e $BASE.$i ] || ! mkdir $BASE.$i; do i=$((i+1)); done; cd $BASE.$i }
 
 editzshrc() {
 	vim ~/.zshrc
