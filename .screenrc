@@ -1,0 +1,42 @@
+# Startup message is annoying
+startup_message off
+
+# Misc h4x to make scrollback work
+#terminfo * te@:ti@
+#termcapinfo xterm|xterms|xs|rxvt ti=\E7\E[?47l
+#defscrollback 1024
+
+# Bells are annoying
+bell_msg ''
+vbell off
+
+# Status line of ultimate win!
+hardstatus lastline
+# See the "STRING ESCAPES" section of the screen manpage
+# I can't remember which Debian person got me started.
+# A note on colours: %{abc} where a is things like d for dim, b for bold, ..
+#       b is the background colour
+#       c is the foreground colour
+#   A . in any of those places indicates that setting should not be changed
+# 1 - Blue background and white foreground
+# 2 - List all windows before the current window
+# 3 - Show the current window with a red background
+# 4 - List the remaining windows with a blue background
+# 5 - Pad to the width of the screen.  This makes the rest right justified.
+# 6 - Switch to green text to show the hostname
+# 7 - Switch to yellow text to show the date in ISO8601 and the time in 24 hour
+#                   1     2     3     4        5    6        7
+hardstatus string "%H %-w[%n %t]%+w -- %Y-%m-%d %c"
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+# Disable some annoying keys that I keep hitting
+#bind H # no screenlog
+#bind h # no hardcopy
+
+defnonblock 5
+
+nethack on
+
+termcapinfo xterm* ti@:te@
+
+
