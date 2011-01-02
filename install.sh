@@ -3,7 +3,7 @@ set -e
 
 for f in rc/.*; do 
 	if [ -f "$f" ]; then
-		rm $(basename "$f")
+		[ -f $(basename "$f") ] && rm $(basename "$f")
 		ln -s "$f"
 	fi
 done
