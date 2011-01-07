@@ -12,9 +12,9 @@ RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]
 }
 
 if [ $UID -eq 0 ]; then
-	PROMPT="%{$reset_color$fg_bold[red]%}%n@%B%M%b:%~%# "
+	PROMPT="%{$reset_color$fg_bold[red]%}%n@%B%m%b:%~%# "
 else
-	PROMPT="%{$fg_bold[blue]%}%n@%M%{$reset_color%}:%{$fg[red]%}%~%{$reset_color%}%# "
+	PROMPT="%{$fg_bold[blue]%}%n@%m%{$reset_color%}:%{$fg[red]%}%~%{$reset_color%}%# "
 fi
 
 RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
@@ -121,6 +121,8 @@ stov() {
 deepkeys() { 
 	curl 'http://pgp.cs.uu.nl/mk_path.cgi?FROM=A482EE24&TO='$1'&PATHS=trust+paths' | egrep -o '<SMALL>[A-F0-9]{8}</SMALL>' | perl -ne 's#</?SMALL>##g; print' | sort | uniq | xargs gpg --recv-keys 
 }
+
+bedword() { printf "$(printf "\\\x%02x\\\x%02x\\\x%02x\\\x%02x" $(($1&0xff)) $((($1>>8)&0xff)) $((($1>>16)&0xff)) $((($1>>24)&0xff)))" }
 
 setopt appendhistory autocd extendedglob nomatch notify
 
