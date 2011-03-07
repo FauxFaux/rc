@@ -6,7 +6,7 @@ zstyle :compinstall filename '/home/faux/.zshrc'
 autoload colors && colors
 
 precmd() {
-	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+	ref=$(git symbolic-ref HEAD 2> /dev/null || echo "")
 	ref=${ref#refs/heads/}
 	RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
 }
@@ -166,4 +166,6 @@ bindkey '^Xe' edit-command-line
 if [ -f ~/.zshlocal ]; then
 	. ~/.zshlocal
 fi
+
+msql() { mysql -u$1 -p$1 -D$1 }
 
