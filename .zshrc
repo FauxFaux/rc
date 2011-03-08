@@ -168,4 +168,6 @@ if [ -f ~/.zshlocal ]; then
 fi
 
 msql() { mysql -u$1 -p$1 -D$1 }
+gk() { gitk "$@" & }
+gka() { gk --all "$@" }
 

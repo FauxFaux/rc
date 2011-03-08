@@ -6,6 +6,23 @@
 	logAllRefUpdates = on
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	co = checkout
+	fa = fetch --all
+	fe = fetch
+	rc = rebase --continue
+	rs = rebase --skip
+	ri = rebase --interactive
+	ra = rebase --abort
+	sl = stash list
+	st = status
+	d = diff
+	di = diff
+	pu = pull
+	aa = add -A
+	a = add
+	ci = commit
+	rh = reset --hard
+	rp = repack -adf
 [color]
 	branch = auto
 	diff = auto
