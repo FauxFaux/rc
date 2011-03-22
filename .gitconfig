@@ -23,8 +23,20 @@
 	ci = commit
 	rh = reset --hard
 	rp = repack -adf
+	pur = pull --rebase
+	cam = commit -am
+	fixup = commit --amend -CHEAD
 [color]
 	branch = auto
 	diff = auto
 	interactive = auto
 	status = auto
+[rebase]
+	autosquash = true
+[help]
+	format = web
+[web]
+	browser = chrome-debian
+[browser "chrome-debian"]
+	cmd = /opt/google/chrome/chrome
+
