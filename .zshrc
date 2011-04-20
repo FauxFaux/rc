@@ -170,4 +170,5 @@ fi
 msql() { mysql -u$1 -p$1 -D$1 }
 gk() { gitk "$@" & }
 gka() { gk --all "$@" }
+hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/messages | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
 

@@ -17,7 +17,6 @@
 	st = status
 	d = diff
 	di = diff
-	pu = pull
 	aa = add -A
 	a = add
 	ci = commit
@@ -26,6 +25,9 @@
 	pur = pull --rebase
 	cam = commit -am
 	fixup = commit --amend -CHEAD
+	mergeback = "!f() { git update-ref refs/heads/master -m \"Force-merging master with current branch $(git symbolic-ref HEAD)\" $(echo \"$1\" | git commit-tree \"HEAD^{tree}\" -p refs/heads/master -p HEAD); git lg master HEAD -4 | cat; }; f"
+	resetother = "!f(){ git update-ref refs/heads/$1 $2; git lg -4 $1 | cat; }; f"
+	po = push --repo=origin
 [color]
 	branch = auto
 	diff = auto
@@ -40,3 +42,5 @@
 [browser "chrome-debian"]
 	cmd = /opt/google/chrome/chrome
 
+[push]
+	default = tracking
