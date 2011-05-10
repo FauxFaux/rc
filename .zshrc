@@ -125,6 +125,11 @@ deepkeys() {
 
 bedword() { printf "$(printf "\\\x%02x\\\x%02x\\\x%02x\\\x%02x" $(($1&0xff)) $((($1>>8)&0xff)) $((($1>>16)&0xff)) $((($1>>24)&0xff)))" }
 
+norprompt() {
+	precmd() {}
+	unset RPROMPT
+}
+
 setopt appendhistory autocd extendedglob nomatch notify
 
 autoload -Uz compinit
@@ -148,7 +153,7 @@ export EDITOR="vim"
 # git--
 #export LESS="-cgiFx4M"
 export PAGER="most"
-export PATH="$HOME/bin/:$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/bin/:$HOME/.cabal/bin:$HOME/usr/bin:$PATH"
 export PYTHONPATH=$PYTHONPATH:$HOME/lib/python
 
 bindkey "^[[1~" beginning-of-line
