@@ -32,6 +32,7 @@ hardstatus string "%H %-w[%n %t]%+w -- %Y-%m-%d %c"
 # Disable some annoying keys that I keep hitting
 #bind H # no screenlog
 #bind h # no hardcopy
+bind ^r # apparently this might be what breaks irssi
 
 defnonblock 5
 
