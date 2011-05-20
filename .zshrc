@@ -174,6 +174,7 @@ fi
 
 msql() { mysql -u$1 -p$1 -D$1 }
 gk() { gitk "$@" & }
-gka() { gk --all "$@" }
+gka() { gk --all $(git log -g --format="%h" -50) "$@" }
 hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/messages | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
+jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] && jar xf $1 $f && jar tf $f && rm $f; done }
 
