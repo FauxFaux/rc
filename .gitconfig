@@ -29,6 +29,7 @@
 	resetother = "!f(){ git update-ref refs/heads/$1 $2; git lg -4 $1 | cat; }; f"
 	po = push origin
 	cm = commit -m
+	bf = branch -f
 [color]
 	branch = auto
 	diff = auto
