@@ -130,7 +130,7 @@ norprompt() {
 	unset RPROMPT
 }
 
-setopt appendhistory autocd extendedglob nomatch notify interactivecomments
+setopt incappendhistory autocd extendedglob nomatch notify interactivecomments
 
 autoload -Uz compinit
 compinit
