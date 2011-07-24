@@ -38,6 +38,7 @@ alias sagi="sudo apt-get install"
 alias sagr="sudo apt-get remove"
 alias sagu="sudo apt-get update"
 alias sagup="sudo apt-get upgrade"
+alias sc="screen -Dr"
 alias se="sudo gvim"
 alias sl="ls"
 alias syslog="sudo tail -n $LINES -f /var/log/syslog"
@@ -180,3 +181,4 @@ jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] &&
 decompressjar() { MWD=$(pwd) && DIR=$(mktemp -d) && (cd $DIR && jar xf $MWD/$1) && rm $1 && (cd $DIR && jar 0cf $MWD/$1 .) && rm -rf $DIR; }
 decompressjarstream() { DIR=$(mktemp -d) && (cd $DIR && jar x && jar 0c .) && rm -rf $DIR; }
 
+ignore() { for f in "$@"; do echo $f >> .gitignore; done }
