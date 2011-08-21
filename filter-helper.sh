@@ -8,22 +8,26 @@ function exampleTwo() {
 	MAPFILE=$(mktemp); echo $MAPFILE; git filter-branch -f --index-filter '. ~/bin/filter-helper.sh && processIndex '\''DIR=$(mktemp -d) && (cd $DIR && jar x && jar 0c .) && rm -rf $DIR'\'' '$MAPFILE' "*.jar"' -- --all
 }
 
+function exampleThree() {
+	MAP=$(mktemp -d); git filter-branch -f --index-filter '. ~/bin/filter-helper.sh && processIndex "sed s/pony/horse/" '$MAP -- --all
+}
+
+# maintains a map inside mapping folder,
+# i.e. f(X) == Y, f(Y) == Y
 function resultant() {
 	# $1: source blob
-	# $2: mapping file
+	# $2: mapping folder
 	# $3: processing function
 
-	# blob is already a result
-	if grep $1$ $2 > /dev/null; then
-		printf $1
+	if [ -f $2/$1 ] ; then
+		cat $2/$1
 
-	# blob isn't present at all, process it
-	elif ! grep $1 $2 > /dev/null; then
+	# blob isn't present
+	else
 		OBLOB=$(git cat-file blob $1 | sh -c "$3" | git hash-object --stdin -w)
-		echo $1 $OBLOB >> $2
+		printf $OBLOB > $2/$1
+		printf $OBLOB > $OBLOB
 		printf $OBLOB
-	else # blob is on the left of the map
-		awk '{if($1=="'$1'"){printf $2}}' < $2
 	fi
 }
 
