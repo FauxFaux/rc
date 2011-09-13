@@ -30,6 +30,8 @@
 	po = push origin
 	cm = commit -m
 	bf = branch -f
+	bv = branch -vv
+	cp = cherry-pick
 [color]
 	branch = auto
 	diff = auto

@@ -182,3 +182,5 @@ decompressjar() { MWD=$(pwd) && DIR=$(mktemp -d) && (cd $DIR && jar xf $MWD/$1) 
 decompressjarstream() { DIR=$(mktemp -d) && (cd $DIR && jar x && jar 0c .) && rm -rf $DIR; }
 
 ignore() { for f in "$@"; do echo $f >> .gitignore; done }
+mt() { mvn clean && mvn test "$@" }
+
