@@ -32,6 +32,7 @@
 	bf = branch -f
 	bv = branch -vv
 	cp = cherry-pick
+	desc = "!f() { if [ $# = 0 ]; then S=HEAD; else S=\"$1\"; fi; git describe --contains $S 2> /dev/null || git describe --tags $S; }; f"
 [color]
 	branch = auto
 	diff = auto
