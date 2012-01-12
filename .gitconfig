@@ -33,6 +33,7 @@
 	bv = branch -vv
 	cp = cherry-pick
 	desc = "!f() { if [ $# = 0 ]; then S=HEAD; else S=\"$1\"; fi; git describe --contains $S 2> /dev/null || git describe --tags $S; }; f"
+	pokeolite = !git ls-remote origin | grep -w refs/heads/poke && git push origin :poke || git push origin master:poke
 [color]
 	branch = auto
 	diff = auto
