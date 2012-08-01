@@ -194,3 +194,4 @@ quotes(){ echo "select concat(quoteid,': < ',nick,'> ',message) from _objectdb_p
 
 echo -ne '\e%G\e[?47h\e%G\e[?47l'
 
+arm() { sudo sudo -u debian-tor arm }
