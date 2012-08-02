@@ -7,7 +7,7 @@ sudo apt-get install openssh-server openssh-client fail2ban \
  deborphan default-jdk diffutils dig dmidecode dnsutils \
  dos2unix e2fsprogs etckeeper fail2ban ffmpeg fish flac \
  ghc6 gnupg gzip imagemagick inotify-tools iotop ipython \
- lockfile-progs lsb-release lzma maven2 md5deep molly-guard \
+ links links2 lockfile-progs lsb-release lzma maven2 md5deep molly-guard \
  most nano ncdu netcat6 netcat-traditional nmap optipng pbzip2 \
  pwgen randomize-lines rkhunter rsync strace unrar unzip \
  vim-nox vim-scripts wbritish whois zip
