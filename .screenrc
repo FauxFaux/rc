@@ -33,7 +33,7 @@ hardstatus string "%H %-w[%n %t]%+w -- %Y-%m-%d %c"
 #bind H # no screenlog
 #bind h # no hardcopy
 bind ^r # apparently this might be what breaks irssi
-bind ^[^? monkey
+bind ^[^?
 
 defnonblock 5
 
