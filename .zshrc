@@ -143,6 +143,8 @@ git-escape-magic
 autoload -Uz compinit
 compinit
 
+. ~/rc/zsh-hardcopy
+
 unsetopt beep
 
 # Move to end of line in history
