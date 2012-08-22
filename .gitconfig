@@ -50,3 +50,5 @@
 
 [push]
 	default = tracking
+[core "include"]
+	path = ~/.gitconfig-local
