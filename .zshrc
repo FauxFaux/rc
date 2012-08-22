@@ -162,6 +162,7 @@ SAVEHIST=1000
 
 #[ Exports ]###################################################################
 export EDITOR="vim"
+export REPORTTIME=10
 # git--
 #export LESS="-cgiFx4M"
 export PAGER="most"
