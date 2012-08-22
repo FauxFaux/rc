@@ -27,6 +27,7 @@ alias acsno="apt-cache search --names-only"
 alias backus="ssh -t -X faux@backus.uwcs.co.uk screen -A -d -RR"
 alias cd..="cd .."
 alias codd="ssh -t -X faux@uwcs.co.uk screen -A -d -RR"
+alias cpp="rsync -a --partial --progress"
 alias d="du --si --max-depth=1"
 alias e="gvim"
 alias g="grep"
@@ -183,7 +184,7 @@ if [ -f ~/.zshlocal ]; then
 	. ~/.zshlocal
 fi
 
-msql() { mysql -u$1 -p$1 -D$1 }
+msql() { mysql -u$1 -p$1 -D$1 $2 $3 $4 $5 } # yes, that's terrible
 gk() { gitk "$@" &disown }
 gka() { gk --all $(git log -g --format="%h" -50) "$@" }
 hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/syslog | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
