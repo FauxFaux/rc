@@ -3,6 +3,7 @@
 ## Get the ability to type:
 
     su -c 'apt-get install sudo git zsh screen; adduser faux sudo; chsh -s /bin/zsh'
+    chsh -s /bin/zsh
 
 ### # log out, log back in
 

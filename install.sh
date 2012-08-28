@@ -18,9 +18,7 @@ sudo apt-get install \
 	debian-goodies \
 	debsums \
 	deborphan \
-	default-jdk \
 	diffutils \
-	dig \
 	dmidecode \
 	dnsutils \
 	dos2unix \
@@ -65,6 +63,9 @@ sudo apt-get install \
 	whois \
 	zip
 
+sudo apt-get install \
+	dig \
+	| true
 for f in rc/.*; do 
 	if [ -f "$f" ]; then
 		[ -f $(basename "$f") ] && rm $(basename "$f")
