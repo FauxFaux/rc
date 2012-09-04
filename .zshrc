@@ -52,8 +52,6 @@ alias v="vim"
 alias :q="exit"
 alias :w='echo \"$PWD\" "$RANDOM"L, "$RANDOM"C written'
 
-alias -g ...='../..'
-alias -g ....='../../../'
 wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status) > /dev/null & }
 
 
