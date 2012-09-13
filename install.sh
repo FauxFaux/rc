@@ -10,6 +10,7 @@ sudo apt-get install \
 	apache2-utils \
 	apt-file \
 	aria2 \
+	buffer \
 	bzip2 \
 	cmake \
 	colordiff \
@@ -51,7 +52,7 @@ sudo apt-get install \
 	optipng \
 	pbzip2 \
 	pwgen \
-	randomize-lines \
+	pv \
 	rkhunter \
 	rsync \
 	strace \
