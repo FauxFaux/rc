@@ -203,5 +203,6 @@ echo -ne '\e%G\e[?47h\e%G\e[?47l'
 arm() { sudo sudo -u debian-tor arm }
 xqillac(){ xqilla -i /dev/stdin <(echo "$@"); }
 nomavennamespace() { sed 's,http://maven.apache.org/[Px][Os][Md]/[^"]*",",g' }
+sparse() { dd if=/dev/zero of=$1 bs=1M count=1 skip=$2 }
 
 sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId }
