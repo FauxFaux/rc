@@ -50,7 +50,7 @@ alias v="vim"
 alias :q="exit"
 alias :w='echo \"$PWD\" "$RANDOM"L, "$RANDOM"C written'
 
-wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status) > /dev/null & }
+wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git fetch &) > /dev/null }
 
 
 #[ Aliases ]###################################################################
@@ -197,4 +197,6 @@ echo -ne '\e%G\e[?47h\e%G\e[?47l'
 
 arm() { sudo sudo -u debian-tor arm }
 xqillac(){ xqilla -i /dev/stdin <(echo "$@"); }
+nomavennamespace() { sed 's,http://maven.apache.org/[Px][Os][Md]/[^"]*",",g' }
 
+sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId }
