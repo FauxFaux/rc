@@ -30,8 +30,6 @@ alias codd="ssh -t -X faux@uwcs.co.uk screen -A -d -RR"
 alias cpp="rsync -a --partial --progress"
 alias d="du --si --max-depth=1"
 alias e="gvim"
-alias g="grep"
-alias joshua="ssh -t -X csuebl@joshua.dcs.warwick.ac.uk screen -A -d -RR"
 alias ls="ls --color=auto -C"
 alias l="ls -C"
 alias more="less" # (More or less.)
