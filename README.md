@@ -8,10 +8,6 @@
 ### # log out, log back in
 
     screen
-    ssh-keygen; cat .ssh/id_*.pub
-
-### # add key to gitolite
-
     git clone --recursive git@goeswhere.com:rc.git
     rc/install.sh
 
