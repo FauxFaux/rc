@@ -30,9 +30,11 @@ if [[ -o login && ! -z "$SSH_AUTH_SOCK" ]]; then
 fi
 
 #[ Aliases ]###################################################################
+alias :q="exit"
+alias :w='echo \"$PWD\" "$RANDOM"L, "$RANDOM"C written'
+alias acp="apt-cache policy"
 alias acs="apt-cache search"
 alias acsh="apt-cache show"
-alias acp="apt-cache policy"
 alias acsno="apt-cache search --names-only"
 alias backus="ssh -t -X faux@backus.uwcs.co.uk screen -A -d -RR"
 alias cd..="cd .."
@@ -40,32 +42,41 @@ alias codd="ssh -t -X faux@uwcs.co.uk screen -A -d -RR"
 alias cpp="rsync -a --partial --progress"
 alias d="du --si --max-depth=1"
 alias e="gvim"
-alias ls="ls --color=auto -C"
 alias l="ls -C"
+alias ls="ls --color=auto -C"
 alias more="less" # (More or less.)
+alias rsyncpp='rsync -av --partial --progress'
 alias s="sudo"
 alias sagi="sudo apt-get install"
 alias sagr="sudo apt-get remove"
 alias sagu="sudo apt-get update"
 alias sagup="sudo apt-get upgrade"
 alias sc="screen -Dr"
-alias sx="screen -x"
 alias se="sudo gvim"
 alias sl="ls"
-alias syslog="sudo tail -n $LINES -f /var/log/syslog"
 alias stf="sudo tail -f"
 alias sv="sudo vim"
+alias sx="screen -x"
+alias syslog="sudo tail -n $LINES -f /var/log/syslog"
 alias tf="tail -f"
 alias v="vim"
-alias :q="exit"
-alias :w='echo \"$PWD\" "$RANDOM"L, "$RANDOM"C written'
 
-wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git fetch &) > /dev/null }
-
-
-#[ Aliases ]###################################################################
-
+arm() { sudo sudo -u debian-tor arm }
 cdt () { BASE=/var/tmp/$LOGNAME$(($(date +%y%m%d))); i=0; while [ -e $BASE.$i ] || ! mkdir $BASE.$i; do i=$((i+1)); done; cd $BASE.$i }
+decompressjar() { MWD=$(pwd) && DIR=$(mktemp -d) && (cd $DIR && jar xf $MWD/$1) && rm $1 && (cd $DIR && jar 0cf $MWD/$1 .) && rm -rf $DIR; }
+decompressjarstream() { DIR=$(mktemp -d) && (cd $DIR && jar x && jar 0c .) && rm -rf $DIR; }
+gk() { gitk "$@" &disown }
+gka() { gk --all $(git log -g --format="%h" -50) "$@" }
+hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/syslog | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
+ignore() { for f in "$@"; do echo $f >> .gitignore; done }
+jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] && jar xf $1 $f && jar tf $f && rm $f; done }
+msql() { mysql -u$1 -p$1 -D$1 $2 $3 $4 $5 } # yes, that's terrible
+mt() { mvn clean && mvn test "$@" }
+nomavennamespace() { sed 's,http://maven.apache.org/[Px][Os][Md]/[^"]*",",g' }
+quotes(){ echo "select concat(quoteid,': < ',nick,'> ',message) from _objectdb_plugins_quote_quoteline where quoteid in (select quoteid from _objectdb_plugins_quote_quoteline where nick='$1');"|mysql -uchoob_scripts -Dchoob|tr -d '[\000-\011]'|perl -pe '$p=$_;$p=~s/:.*//;if($p ne $l){$l=$p;print"\n";}' | sed 1d;}
+sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId }
+sparse() { dd if=/dev/zero of=$1 bs=1M count=1 skip=$2 }
+wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git fetch &) > /dev/null }
 
 editzshrc() {
 	vim ~/.zshrc
@@ -195,22 +206,6 @@ if [ -f ~/.zshlocal ]; then
 	. ~/.zshlocal
 fi
 
-msql() { mysql -u$1 -p$1 -D$1 $2 $3 $4 $5 } # yes, that's terrible
-gk() { gitk "$@" &disown }
-gka() { gk --all $(git log -g --format="%h" -50) "$@" }
-hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/syslog | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
-jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] && jar xf $1 $f && jar tf $f && rm $f; done }
-decompressjar() { MWD=$(pwd) && DIR=$(mktemp -d) && (cd $DIR && jar xf $MWD/$1) && rm $1 && (cd $DIR && jar 0cf $MWD/$1 .) && rm -rf $DIR; }
-decompressjarstream() { DIR=$(mktemp -d) && (cd $DIR && jar x && jar 0c .) && rm -rf $DIR; }
-
-ignore() { for f in "$@"; do echo $f >> .gitignore; done }
-mt() { mvn clean && mvn test "$@" }
-quotes(){ echo "select concat(quoteid,': < ',nick,'> ',message) from _objectdb_plugins_quote_quoteline where quoteid in (select quoteid from _objectdb_plugins_quote_quoteline where nick='$1');"|mysql -uchoob_scripts -Dchoob|tr -d '[\000-\011]'|perl -pe '$p=$_;$p=~s/:.*//;if($p ne $l){$l=$p;print"\n";}' | sed 1d;}
-
 echo -ne '\e%G\e[?47h\e%G\e[?47l'
 
-arm() { sudo sudo -u debian-tor arm }
-nomavennamespace() { sed 's,http://maven.apache.org/[Px][Os][Md]/[^"]*",",g' }
-sparse() { dd if=/dev/zero of=$1 bs=1M count=1 skip=$2 }
-alias rsyncpp='rsync -av --partial --progress'
-sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId }
+
