@@ -2,7 +2,6 @@
 	name = Chris West (Faux)
 	email = git@goeswhere.com
 [core]
-	pager = most
 	logAllRefUpdates = on
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative

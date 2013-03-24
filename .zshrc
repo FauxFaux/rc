@@ -113,9 +113,22 @@ SAVEHIST=1000
 #[ Exports ]###################################################################
 export EDITOR="vim"
 export REPORTTIME=10
-# git--
+
+# -i case insenstive searching
+# -N number lines
+# -w track paging with line hilights
+# -q no bell
+# -z track paging by not paging a whole page
+# -g hilight only the current match during search
+# -e quit at eof
+# -M more verbose
+# -X disable some termcap, e.g. clearing (?)
+# -F quit if less than one screen
+# -R allow colour display codes through
+# -P set the prompt
+export LESS='-i -w -q -z-4 -g -M -X -F -R -P%t?f%f:stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
 #export LESS="-cgiFx4M"
-export PAGER="most"
+export PAGER=less
 export PATH="$HOME/bin/:$HOME/.cabal/bin:$HOME/usr/bin:$PATH"
 export PYTHONPATH=$PYTHONPATH:$HOME/lib/python
 
