@@ -3,10 +3,10 @@ set -e
 
 # get some dotfiles into place
 for f in rc/.*; do
-	if [ -f "$f" ]; then
-		[ -f $(basename "$f") ] && rm $(basename "$f")
-		ln -s "$f"
-	fi
+	B=$(basename "$f")
+	[ "$B" = "." -o "$B" = ".." -o "$B" = ".git" -o "$B" = ".gitmodules" ] && continue
+	[ -L "$B" ] && rm "$B"
+	ln -s "$f"
 done
 
 # please let me actually use the machine
