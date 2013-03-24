@@ -77,7 +77,9 @@ sudo apt-get install \
 	imagemagick \
 	ipython \
 	maven2 \
-	optipng
+	optipng \
+	pyflakes \
+	tidy
 
 # might fail
 sudo apt-get install \
