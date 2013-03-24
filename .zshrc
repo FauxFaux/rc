@@ -87,58 +87,9 @@ kernel() {
 	make-kpkg --rootcmd fakeroot --append_to_version=-faux --initrd kernel_image
 }
 
-esvn () {
-	[[ -z $1 ]] && { echo "$0: error: specify file to edit"; return 1; }
-	gvim --nofork $1 && { svn add Makefile; svn diff $1 2>&1 | gvim -d - ; svn commit $1 }
-}
-
-ediff () {
-	TEMPFILE=$(tempfile -pediff -s.diff)
-	svn diff > $TEMPFILE
-	gvimdiff -M $TEMPFILE # edit with no modifications allowed
-}
-
-pushdotfilesto() {
-	[[ -z $1 ]] && { echo "$0: error: specify location"; return 1; }
-	scp ~/.vimrc ~/.screenrc ~/.zshrc "${1}":
-}
-
-f() {
-	[[ -z $1 ]] && { echo "$0: error: specify search string"; return 1 }
-	find . | egrep -v "(.git|.svn-base|.svn|.bzr)" | xargs grep $1
-}
-
-
 ++ () {
 	[[ -z $1 ]] && { echo "$0: Compiles and runs a C++ program. usage: $0 filename.cpp" }
 	g++ -std=c++98 -pedantic-errors -Wall -Werror -Wfatal-errors -Wwrite-strings -ftrapv -fno-merge-constants -fno-nonansi-builtins -fno-gnu-keywords -fstrict-aliasing "$1" -o"$(basename "$1" .cpp)" && "$(dirname "$1")"/"$(basename "$1" .cpp)"
-}
-
-
-#[ Debian ]##################################################################==
-
-acsd() {
-	[[ -z $1 ]] && { echo "$0: error: invalid search string"; return 1 }
-	apt-cache search $1 | grep -i "$1"
-}
-
-res() {
-	[[ -z $1 ]] && { echo "$0: error: please specify a daemon"; return 1 }
-	sudo /etc/init.d/$1 restart
-}
-
-rel() {
-	[[ -z $1 ]] && { echo "$0: error: please specify a daemon"; return 1 }
-	sudo /etc/init.d/$1 reload
-}
-
-upload_to() {
-     scp -l 120 -C ${1} "${2}:${3}" && echo "\n${4}${1}"
-}
-
-stov() {
-    [[ -z $1 ]] && { echo "$0: error: please specify a filename"; return 1 }
-    upload_to "${@}" "faux@uwcs.co.uk" "public_html/b/" "http://faux.uwcs.co.uk/b/"
 }
 
 deepkeys() { 
