@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
+# get some dotfiles into place
 for f in rc/.*; do
 	if [ -f "$f" ]; then
 		[ -f $(basename "$f") ] && rm $(basename "$f")
@@ -8,18 +9,24 @@ for f in rc/.*; do
 	fi
 done
 
+# please let me actually use the machine
 sudo apt-get install \
 	openssh-server \
 	openssh-client \
 	fail2ban \
-	build-essential \
+	most \
+	ncdu \
+	vim-nox \
+	vim-scripts
+
+# this is actually a unix machine, look
+sudo apt-get install \
 	ack-grep \
 	apache2-utils \
 	apt-file \
 	aria2 \
 	buffer \
 	bzip2 \
-	cmake \
 	colordiff \
 	connect-proxy \
 	dc \
@@ -32,31 +39,21 @@ sudo apt-get install \
 	dos2unix \
 	e2fsprogs \
 	etckeeper \
-	fail2ban \
-	ffmpeg \
-	fish \
-	flac \
-	ghc6 \
 	gnupg \
 	gzip \
-	imagemagick \
 	inotify-tools \
-	iotop ipython \
+	iotop \
 	links \
 	links2 \
 	lockfile-progs \
 	lsb-release \
 	lzma \
-	maven2 \
 	md5deep \
 	molly-guard \
-	most \
 	nano \
-	ncdu \
 	netcat6 \
 	netcat-traditional \
 	nmap \
-	optipng \
 	pbzip2 \
 	pwgen \
 	pv \
@@ -65,13 +62,24 @@ sudo apt-get install \
 	strace \
 	unrar \
 	unzip \
-	vim-nox \
-	vim-scripts \
 	wbritish \
 	whois \
 	zip
 
+# compilers, interpreters and media
+sudo apt-get install \
+	build-essential \
+	cmake \
+	ffmpeg \
+	fish \
+	flac \
+	ghc6 \
+	imagemagick \
+	ipython \
+	maven2 \
+	optipng
+
+# might fail
 sudo apt-get install \
 	dig \
 	| true
-
