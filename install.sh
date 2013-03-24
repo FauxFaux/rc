@@ -4,7 +4,7 @@ set -e
 # get some dotfiles into place
 for f in rc/.*; do
 	B=$(basename "$f")
-	[ "$B" = "." -o "$B" = ".." -o "$B" = ".git" -o "$B" = ".gitmodules" ] && continue
+	[ "$B" = "." -o "$B" = ".." -o "$B" = ".git" -o "$B" = ".gitmodules" -o "$B" = ".gitignore" ] && continue
 	[ -L "$B" ] && rm "$B"
 	ln -s "$f"
 done
