@@ -24,4 +24,5 @@ set showbreak=>>
 set tabstop=4
 set st=4
 set shiftwidth=4 "when using << and >> to indent, this value is used
+set expandtab
 
