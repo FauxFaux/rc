@@ -1,6 +1,13 @@
 #!/bin/sh
 set -e
 
+for f in rc/.*; do
+	if [ -f "$f" ]; then
+		[ -f $(basename "$f") ] && rm $(basename "$f")
+		ln -s "$f"
+	fi
+done
+
 sudo apt-get install \
 	openssh-server \
 	openssh-client \
@@ -67,10 +74,4 @@ sudo apt-get install \
 sudo apt-get install \
 	dig \
 	| true
-for f in rc/.*; do 
-	if [ -f "$f" ]; then
-		[ -f $(basename "$f") ] && rm $(basename "$f")
-		ln -s "$f"
-	fi
-done
 
