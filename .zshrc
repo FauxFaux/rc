@@ -13,6 +13,7 @@ precmd() {
 		ref=${ref#refs/heads/}
 	fi
 	RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
+	printf '\e]82;'$(pwd)'\007'
 }
 
 if [ $UID -eq 0 ]; then
