@@ -19,6 +19,11 @@ fi
 
 RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
 
+# make the ssh agent available at a consistent path, for screen'd shells
+if [[ -o login && ! -z "$SSH_AUTH_SOCK" ]]; then
+	rm -f ~/.ssh/auth_sock && ln -s $SSH_AUTH_SOCK ~/.ssh/auth_sock
+fi
+
 #[ Aliases ]###################################################################
 alias acs="apt-cache search"
 alias acsh="apt-cache show"
