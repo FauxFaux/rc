@@ -6,8 +6,12 @@ zstyle :compinstall filename '/home/faux/.zshrc'
 autoload colors && colors
 
 precmd() {
-	ref=$(git symbolic-ref HEAD 2> /dev/null || echo "")
-	ref=${ref#refs/heads/}
+	if [[ "$(pwd)" == /smb* ]]; then
+		ref=/smb
+	else
+		ref=$(git symbolic-ref HEAD 2> /dev/null || echo "")
+		ref=${ref#refs/heads/}
+	fi
 	RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
 }
 
