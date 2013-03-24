@@ -12,9 +12,12 @@ set ignorecase " for search
 """"""""""""""
 set nu
 colorscheme elflord
+" non-unicode vim-sensible option; fonts aren't around for the unicode one
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set list " display tabs, trailing space etc. by default
 set linebreak " mark that lines have been wrapped with showbreak:
 set showbreak=>>
+
 
 " Indentation "
 """""""""""""""
