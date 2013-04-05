@@ -1,2 +1,4 @@
 *.swp
 *~
+.mutt/certificates
+.mutt/cache

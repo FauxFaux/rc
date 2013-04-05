@@ -1,2 +1,5 @@
 subscribe https-everywhere@eff.org git@vger.kernel.org openssh-unix-dev@mindrot.org
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
 
