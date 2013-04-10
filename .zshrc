@@ -28,6 +28,7 @@ RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]
 if [[ -o login && ! -z "$SSH_AUTH_SOCK" ]]; then
 	rm -f ~/.ssh/auth_sock && ln -s $SSH_AUTH_SOCK ~/.ssh/auth_sock
 fi
+export SSH_AUTH_SOCK=~/.ssh/auth_sock
 
 #[ Aliases ]###################################################################
 alias :q="exit"
