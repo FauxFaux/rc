@@ -38,6 +38,7 @@ alias acs="apt-cache search"
 alias acsh="apt-cache show"
 alias acsno="apt-cache search --names-only"
 alias cd..="cd .."
+alias encsetup='encfs ~/.encrypted/ ~/secure'
 alias l="ls -C"
 alias ls="ls --color=auto -C"
 alias more="less" # (More or less.)
