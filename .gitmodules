@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/vim-localvimrc"]
 	path = .vim/bundle/vim-localvimrc
 	url = git://github.com/embear/vim-localvimrc.git
+[submodule ".vim/bundle/vim-protobuf"]
+	path = .vim/bundle/vim-protobuf
+	url = git://github.com/uarun/vim-protobuf.git
