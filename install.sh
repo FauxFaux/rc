@@ -68,6 +68,7 @@ sudo apt-get install \
 
 # compilers, interpreters and media
 sudo apt-get install \
+	automake \
 	build-essential \
 	cmake \
 	ffmpeg \
