@@ -43,6 +43,7 @@ sudo apt-get install \
 	gzip \
 	inotify-tools \
 	iotop \
+	libxml2-utils \
 	links \
 	links2 \
 	lockfile-progs \
@@ -50,6 +51,7 @@ sudo apt-get install \
 	lzma \
 	md5deep \
 	molly-guard \
+	moreutils \
 	nano \
 	netcat6 \
 	netcat-traditional \
@@ -59,6 +61,7 @@ sudo apt-get install \
 	pv \
 	rkhunter \
 	rsync \
+	socat \
 	strace \
 	unrar \
 	unzip \
