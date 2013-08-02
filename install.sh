@@ -81,6 +81,7 @@ sudo apt-get install \
 	imagemagick \
 	ipython \
 	maven2 \
+	openjdk-7-jdk \
 	optipng \
 	pyflakes \
 	tidy
