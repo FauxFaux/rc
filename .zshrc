@@ -25,9 +25,10 @@ fi
 RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
 
 # make the ssh agent available at a consistent path, for screen'd shells
-if [[ -o login && ! -z "$SSH_AUTH_SOCK" ]]; then
+if [[ -o login && ! -z "$SSH_AUTH_SOCK" && -z "$TMUX" ]]; then
 	rm -f ~/.ssh/auth_sock && ln -s $SSH_AUTH_SOCK ~/.ssh/auth_sock
 fi
+
 export SSH_AUTH_SOCK=~/.ssh/auth_sock
 
 #[ Aliases ]###################################################################
@@ -49,7 +50,7 @@ alias sagr="sudo apt-get remove"
 alias sagu="sudo apt-get update"
 alias sagup="sudo apt-get upgrade"
 alias sagdup="sudo apt-get dist-upgrade"
-alias sc="screen -Dr"
+alias sc="tmux attach -d"
 alias sl="ls"
 alias sx="screen -x"
 alias v="vim"
