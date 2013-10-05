@@ -11,13 +11,18 @@ done
 
 # please let me actually use the machine
 sudo apt-get install \
+	connect-proxy \
+	git \
 	openssh-server \
 	openssh-client \
 	fail2ban \
 	most \
 	ncdu \
+	sudo \
+	tmux \
 	vim-nox \
-	vim-scripts
+	vim-scripts \
+	zsh
 
 # this is actually a unix machine, look
 sudo apt-get install \
