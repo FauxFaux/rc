@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vim-protobuf"]
 	path = .vim/bundle/vim-protobuf
 	url = git://github.com/uarun/vim-protobuf.git
+[submodule "z"]
+	path = z
+	url = git@github.com:rupa/z.git
