@@ -16,7 +16,6 @@ sudo apt-get install \
 	openssh-server \
 	openssh-client \
 	fail2ban \
-	most \
 	ncdu \
 	sudo \
 	tmux \
@@ -82,7 +81,7 @@ sudo apt-get install \
 	ffmpeg \
 	fish \
 	flac \
-	ghc6 \
+	ghc \
 	imagemagick \
 	ipython \
 	maven2 \
