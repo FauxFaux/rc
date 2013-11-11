@@ -74,7 +74,7 @@ mt() { mvn clean "$@" && mvn test "$@" }
 nomavennamespace() { sed 's,http://maven.apache.org/[Px][Os][Md]/[^"]*",",g' }
 norprompt() { precmd() {}; unset RPROMPT }
 quotes(){ echo "select concat(quoteid,': < ',nick,'> ',message) from _objectdb_plugins_quote_quoteline where quoteid in (select quoteid from _objectdb_plugins_quote_quoteline where nick='$1');"|mysql -uchoob_scripts -Dchoob|tr -d '[\000-\011]'|perl -pe '$p=$_;$p=~s/:.*//;if($p ne $l){$l=$p;print"\n";}' | sed 1d;}
-sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId }
+sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId "$@" }
 sparse() { dd if=/dev/zero of=$1 bs=1M count=1 skip=$2 }
 wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git fetch &) > /dev/null }
 
