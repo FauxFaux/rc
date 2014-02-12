@@ -82,6 +82,7 @@ wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git f
 	[[ -z $1 ]] && { echo "$0: Compiles and runs a C++ program. usage: $0 filename.cpp" }
 	g++ -std=c++98 -pedantic-errors -Wall -Werror -Wfatal-errors -Wwrite-strings -ftrapv -fno-merge-constants -fno-nonansi-builtins -fno-gnu-keywords -fstrict-aliasing "$1" -o"$(basename "$1" .cpp)" && "$(dirname "$1")"/"$(basename "$1" .cpp)"
 }
+rss() { for feed in 'http://probablyfine.co.uk/feed/' 'http://blog.suriar.net/feeds/posts/default?alt=rss'; do curl -s $feed | xqillac 'for $x in //item return (data($x/title),data($x/link),data($x/pubDate))' | while read title; read url; read date; do echo $(date -d"$date" +%s) $url $title; done; done | sort -n | tail -n4 | cut -d\  -f2- }
 
 setopt incappendhistory autocd extendedglob nomatch notify interactivecomments
 
@@ -133,6 +134,7 @@ export LESS='-i -w -q -z-4 -g -M -X -F -R -P%t?f%f:stdin .?pb%pb\%:?lbLine %lb:?
 export PAGER=less
 export PATH="$HOME/bin/:$HOME/.cabal/bin:$HOME/usr/bin:$PATH"
 export PYTHONPATH=$PYTHONPATH:$HOME/lib/python
+export MANPATH=$HOME/share/man:$(manpath)
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
