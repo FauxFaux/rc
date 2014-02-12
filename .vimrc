@@ -27,3 +27,6 @@ set shiftwidth=4 "when using << and >> to indent, this value is used
 set expandtab
 
 let g:localvimrc_persistent=2 " remember that localvimrcs are okay
+
+let g:slime_target="tmux" " hah screen
+
