@@ -46,10 +46,6 @@
 	autosquash = true
 [help]
 	format = web
-[web]
-	browser = chrome-debian
-[browser "chrome-debian"]
-	cmd = /opt/google/chrome/chrome
 [url "git@goeswhere.com:"]
 	insteadOf = "reg:"
 [url "git@github.com:"]
