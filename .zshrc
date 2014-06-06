@@ -84,6 +84,20 @@ wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git f
 }
 rss() { for feed in 'http://probablyfine.co.uk/feed/' 'http://blog.suriar.net/feeds/posts/default?alt=rss'; do curl -s $feed | xqillac 'for $x in //item return (data($x/title),data($x/link),data($x/pubDate))' | while read title; read url; read date; do echo $(date -d"$date" +%s) $url $title; done; done | sort -n | tail -n4 | cut -d\  -f2- }
 
+svncd() { svn up --depth=immediates "$@" && cd "$1" }
+svnco() { svn up --set-depth=infinity "$@" }
+svnls() { svn up --set-depth=immediates "$@" }
+svndeepen() {
+    find "$@" -type d -empty -not \( \
+        -wholename '*/tags/*' -o \
+        -wholename '*/tags-*/*' -o \
+        -wholename '*/branches/*' -o \
+        -wholename '*/branches-*/*' -o \
+        -wholename '*/trunk*' -o \
+        -wholename '*/releases/*' \
+    \) -exec svn up --set-depth=immediates {} + }
+svntrunk() { find "$@" -name trunk -exec svn up --set-depth=infinity {} + }
+
 setopt incappendhistory autocd extendedglob nomatch notify interactivecomments
 
 fpath=(~/rc/zsh-git-escape-magic $fpath)
