@@ -44,8 +44,6 @@
 	status = auto
 [rebase]
 	autosquash = true
-[help]
-	format = web
 [url "git@goeswhere.com:"]
 	insteadOf = "reg:"
 [url "git@github.com:"]
