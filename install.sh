@@ -89,7 +89,6 @@ sudo apt-get install \
 	pyflakes \
 	tidy
 
-# might fail
-sudo apt-get install \
-	dig \
-	| true
+for failable in dig cgroup-lite; do
+    sudo apt-get install $failable || true
+done
