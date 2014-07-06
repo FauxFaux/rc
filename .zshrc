@@ -170,3 +170,4 @@ fi
 
 echo -ne '\e%G\e[?47h\e%G\e[?47l'
 
+suspend() { dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend }
