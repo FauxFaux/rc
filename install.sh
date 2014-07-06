@@ -60,6 +60,7 @@ sudo apt-get install \
 	netcat6 \
 	netcat-traditional \
 	nmap \
+	ntp \
 	pbzip2 \
 	pwgen \
 	pv \
