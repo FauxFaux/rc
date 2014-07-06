@@ -2,7 +2,7 @@
 
 ## Get the ability to type:
 
-    su -c 'apt-get install sudo git zsh screen connect-proxy; adduser faux sudo; chsh -s /bin/zsh'
+    su -c 'apt-get install sudo git zsh tmux connect-proxy; adduser faux sudo; chsh -s /bin/zsh'
     chsh -s /bin/zsh
 
 ### # proxy busting
@@ -16,6 +16,6 @@
 ### # log out, log back in (with agent forwarding)
 
     git clone --recursive git@goeswhere.com:rc.git
-    screen
+    tmux
     rc/install.sh
 
