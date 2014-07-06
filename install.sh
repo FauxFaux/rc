@@ -78,7 +78,6 @@ sudo apt-get install \
 	automake \
 	build-essential \
 	cmake \
-	ffmpeg \
 	fish \
 	flac \
 	ghc \
