@@ -1,0 +1,91 @@
+From 7730ac0407ec2cb70f461ae4929e8a6ec20a3b0b Mon Sep 17 00:00:00 2001
+From: "Chris West (Faux)" <git@goeswhere.com>
+Date: Fri, 21 Mar 2014 23:38:23 +0000
+Subject: [PATCH] osdep_get_cwd: linux: recurse parents until one yields
+
+This helps when a command is running as a different user, it is common
+to be able to see its parents, but not its cwd.  It may make sense, in
+this situation, to present the parent's path.  e.g. if a user runs a set
+of commands like:
+
+$ cd /foo/bar
+$ sudo hang-for-a-bit
+
+.. it could be expected that get_cwd returns "/foo/bar", not NULL, as
+previously.  sudo's cwd is not available, as the process itself is
+running as root, but its parent process is, and its parent (the shell)'s
+cwd is available to us.
+---
+ osdep-linux.c | 46 +++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 35 insertions(+), 11 deletions(-)
+
+diff --git a/osdep-linux.c b/osdep-linux.c
+index 46aea68..4627059 100644
+--- a/osdep-linux.c
++++ b/osdep-linux.c
+@@ -60,6 +60,26 @@ osdep_get_name(int fd, unused char *tty)
+ 	return (buf);
+ }
+ 
++// 0 on failure
++pid_t
++parent_pid_of(pid_t pid) {
++	char		*path;
++	FILE		*f;
++	pid_t		ret = 0;
++
++	xasprintf(&path, "/proc/%lld/stat", (long long) pid);
++	f = fopen(path, "r");
++	if (!f)
++		return 0;
++
++	if (1 != fscanf(f, "%*d %*s %*c %d", &ret)) {
++		ret = 0;
++	}
++
++	fclose(f);
++	return ret;
++}
++
+ char *
+ osdep_get_cwd(int fd)
+ {
+@@ -71,20 +91,24 @@ osdep_get_cwd(int fd)
+ 	if ((pgrp = tcgetpgrp(fd)) == -1)
+ 		return (NULL);
+ 
+-	xasprintf(&path, "/proc/%lld/cwd", (long long) pgrp);
+-	n = readlink(path, target, MAXPATHLEN);
+-	free(path);
+-
+-	if (n == -1 && ioctl(fd, TIOCGSID, &sid) != -1) {
+-		xasprintf(&path, "/proc/%lld/cwd", (long long) sid);
++	do {
++		xasprintf(&path, "/proc/%lld/cwd", (long long) pgrp);
+ 		n = readlink(path, target, MAXPATHLEN);
+ 		free(path);
+-	}
+ 
+-	if (n > 0) {
+-		target[n] = '\0';
+-		return (target);
+-	}
++		if (n == -1 && ioctl(fd, TIOCGSID, &sid) != -1) {
++			xasprintf(&path, "/proc/%lld/cwd", (long long) sid);
++			n = readlink(path, target, MAXPATHLEN);
++			free(path);
++		}
++
++		if (n > 0) {
++			target[n] = '\0';
++			return (target);
++		}
++		pgrp = parent_pid_of(pgrp);
++	} while (pgrp);
++
+ 	return (NULL);
+ }
+ 
+-- 
+1.9.1
+
