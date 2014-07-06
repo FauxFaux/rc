@@ -11,6 +11,9 @@ bindsym $mod+z exec setxkbmap -v gb
 bindsym $mod+x exec setxkbmap -v gb -variant colemak
 bindsym $mod+l exec i3lock -d -c 606060
 
+bindsym XF86AudioRaiseVolume exec amixer set Master 3+
+bindsym XF86AudioLowerVolume exec amixer set Master 3-
+
 bindsym $mod+Shift+q kill
 
 bindsym $mod+r exec dmenu_run
