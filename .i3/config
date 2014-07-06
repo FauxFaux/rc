@@ -7,6 +7,7 @@ font pango:DejaVu Sans Mono 10
 floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
 
+# with im-config -> xim, not ibus (which doesn't do colemauk properly)
 bindsym $mod+z exec setxkbmap -v gb
 bindsym $mod+x exec setxkbmap -v gb -variant colemak
 bindsym $mod+l exec i3lock -d -c 606060
