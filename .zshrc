@@ -148,7 +148,6 @@ export LESS='-i -w -q -z-4 -g -M -X -F -R -P%t?f%f:stdin .?pb%pb\%:?lbLine %lb:?
 export PAGER=less
 export PATH="$HOME/bin/:$HOME/.cabal/bin:$HOME/usr/bin:$PATH"
 export PYTHONPATH=$PYTHONPATH:$HOME/lib/python
-export MANPATH=$HOME/share/man:$(manpath)
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
