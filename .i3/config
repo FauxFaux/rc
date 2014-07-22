@@ -15,6 +15,8 @@ bindsym $mod+o move workspace to output left
 
 bindsym XF86AudioRaiseVolume exec amixer set Master 3+
 bindsym XF86AudioLowerVolume exec amixer set Master 3-
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 bindsym $mod+Shift+q kill
 
