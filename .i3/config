@@ -39,6 +39,9 @@ bindsym $mod+v split v
 
 bindsym $mod+f fullscreen
 
+bindsym $mod+m border toggle
+bindsym $mod+n bar mode toggle
+
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+d layout toggle split
