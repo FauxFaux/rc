@@ -49,6 +49,9 @@ bindsym $mod+d layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
+bindsym $mod+z move scratchpad
+bindsym $mod+Shift+z scratchpad show
+
 bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
