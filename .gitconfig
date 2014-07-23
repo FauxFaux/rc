@@ -37,6 +37,7 @@
 	sf = svn fetch
 	sr = svn rebase
 	sd = svn dcommit
+	ru = remote update
 [color]
 	branch = auto
 	diff = auto
