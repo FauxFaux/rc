@@ -42,6 +42,7 @@ sudo apt-get install \
 	dnsutils \
 	dos2unix \
 	e2fsprogs \
+	encfs \
 	etckeeper \
 	gnupg \
 	gzip \
@@ -84,8 +85,8 @@ sudo apt-get install \
 	ghc \
 	imagemagick \
 	ipython \
-	maven2 \
-	openjdk-7-jdk \
+	maven \
+	openjdk-8-jdk \
 	optipng \
 	pyflakes \
 	tidy
