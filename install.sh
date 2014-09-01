@@ -94,3 +94,18 @@ sudo apt-get install \
 for failable in dig cgroup-lite; do
     sudo apt-get install $failable || true
 done
+
+sudo apt-get install \
+    alsa-utils \
+    dbus-x11 \
+    i3 \
+    network-manager \
+    xautolock \
+    xorg
+
+sudo apt-get install \
+    gedit \
+    gnome-terminal \
+    mplayer \
+    mpd
+
