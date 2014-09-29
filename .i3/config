@@ -31,6 +31,9 @@ bindsym $mod+Ctrl+Down focus down
 bindsym $mod+Ctrl+Up focus up
 bindsym $mod+Ctrl+Right focus right
 
+bindsym $mod+p focus left
+bindsym $mod+g focus right
+
 bindsym $mod+Left move left
 bindsym $mod+Down move down
 bindsym $mod+Up move up
@@ -95,7 +98,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+p mode "resize"
+bindsym $mod+j mode "resize"
 
 bar {
     status_command i3status
