@@ -28,6 +28,7 @@ sudo apt-get install \
 	ack-grep \
 	apache2-utils \
 	apt-file \
+	autossh \
 	aria2 \
 	buffer \
 	bzip2 \
