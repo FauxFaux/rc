@@ -11,8 +11,11 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+q exec setxkbmap -v gb
 bindsym $mod+c exec setxkbmap -v gb -variant colemak
 
-bindsym $mod+l exec "xautolock -locknow && xset dpms force off"
+bindsym $mod+l exec "xautolock -locknow"
 bindsym $mod+ctrl+shift+l exec "xautolock -locknow && suspend"
+bindsym $mod+ctrl+l exec "xset dpms 10"
+bindsym $mod+shift+l exec "xset dpms 590"
+
 bindsym $mod+o move workspace to output left
 
 # normal computers
