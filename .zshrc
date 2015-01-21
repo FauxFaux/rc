@@ -39,6 +39,7 @@ alias acs="apt-cache search"
 alias acsh="apt-cache show"
 alias acsno="apt-cache search --names-only"
 alias cd..="cd .."
+alias clip="xclip -selection clipboard"
 alias encsetup='encfs ~/.encrypted/ ~/secure'
 alias g=git
 alias l="ls -C"
@@ -172,4 +173,5 @@ echo -ne '\e%G\e[?47h\e%G\e[?47l'
 
 suspend() { dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend }
 idea() { nohup ~/ins/idea/bin/idea.sh &disown }
+setroot() { xsetroot -solid grey17 }
 
