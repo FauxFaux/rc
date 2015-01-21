@@ -38,6 +38,7 @@ alias acp="apt-cache policy"
 alias acs="apt-cache search"
 alias acsh="apt-cache show"
 alias acsno="apt-cache search --names-only"
+alias arm="sudo sudo -u debian-tor arm"
 alias cd..="cd .."
 alias clip="xclip -selection clipboard"
 alias encsetup='encfs ~/.encrypted/ ~/secure'
@@ -46,6 +47,7 @@ alias gb='gradle build'
 alias l="ls -C"
 alias ls="ls --color=auto -C"
 alias more="less" # (More or less.)
+alias nomavennamespace="sed 's,http://maven.apache.org/[Px][Os][Md]/[^\"]*\",\",g'"
 alias rsyncpp='rsync -av --partial --progress'
 alias s="sudo"
 alias sagdup="sudo apt-get dist-upgrade"
@@ -55,13 +57,12 @@ alias sagu="sudo apt-get update"
 alias sagup="sudo apt-get upgrade"
 alias sc="tmux attach -d"
 alias setroot="xsetroot -solid grey17"
-alias suspend="dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend }"
 alias sl="ls"
+alias sortpom="mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId"
+alias suspend="dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend }"
 alias sx="screen -x"
 alias v="vim"
 
-
-arm() { sudo sudo -u debian-tor arm }
 bedword() { printf "$(printf "\\\x%02x\\\x%02x\\\x%02x\\\x%02x" $(($1&0xff)) $((($1>>8)&0xff)) $((($1>>16)&0xff)) $((($1>>24)&0xff)))" }
 cdt () { BASE=/var/tmp/$LOGNAME$(($(date +%y%m%d))); i=0; while [ -e $BASE.$i ] || ! mkdir $BASE.$i; do i=$((i+1)); done; cd $BASE.$i }
 decompressjar() { MWD=$(pwd) && DIR=$(mktemp -d) && (cd $DIR && jar xf $MWD/$1) && rm $1 && (cd $DIR && jar 0cf $MWD/$1 .) && rm -rf $DIR; }
@@ -77,21 +78,21 @@ jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] &&
 kernel() { make-kpkg --rootcmd fakeroot --append_to_version=-$USER --initrd kernel_image }
 msql() { mysql -u$1 -p$1 -D$1 $2 $3 $4 $5 } # yes, that's terrible
 mt() { mvn clean "$@" && mvn test "$@" }
-nomavennamespace() { sed 's,http://maven.apache.org/[Px][Os][Md]/[^"]*",",g' }
 norprompt() { precmd() {}; unset RPROMPT }
 quotes(){ echo "select concat(quoteid,': < ',nick,'> ',message) from _objectdb_plugins_quote_quoteline where quoteid in (select quoteid from _objectdb_plugins_quote_quoteline where nick='$1');"|mysql -uchoob_scripts -Dchoob|tr -d '[\000-\011]'|perl -pe '$p=$_;$p=~s/:.*//;if($p ne $l){$l=$p;print"\n";}' | sed 1d;}
-sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId "$@" }
+rss() { for feed in 'http://probablyfine.co.uk/feed/' 'http://blog.suriar.net/feeds/posts/default?alt=rss'; do curl -s $feed | xqillac 'for $x in //item return (data($x/title),data($x/link),data($x/pubDate))' | while read title; read url; read date; do echo $(date -d"$date" +%s) $url $title; done; done | sort -n | tail -n4 | cut -d\  -f2- }
 sparse() { dd if=/dev/zero of=$1 bs=1M count=1 skip=$2 }
+svncd() { svn up --depth=immediates "$@" && cd "$1" }
+svnco() { svn up --set-depth=infinity "$@" }
+svnls() { svn up --set-depth=immediates "$@" }
+svntrunk() { find "$@" -name trunk -exec svn up --set-depth=infinity {} + }
 wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git fetch &) > /dev/null }
+
 ++ () {
 	[[ -z $1 ]] && { echo "$0: Compiles and runs a C++ program. usage: $0 filename.cpp" }
 	g++ -std=c++98 -pedantic-errors -Wall -Werror -Wfatal-errors -Wwrite-strings -ftrapv -fno-merge-constants -fno-nonansi-builtins -fno-gnu-keywords -fstrict-aliasing "$1" -o"$(basename "$1" .cpp)" && "$(dirname "$1")"/"$(basename "$1" .cpp)"
 }
-rss() { for feed in 'http://probablyfine.co.uk/feed/' 'http://blog.suriar.net/feeds/posts/default?alt=rss'; do curl -s $feed | xqillac 'for $x in //item return (data($x/title),data($x/link),data($x/pubDate))' | while read title; read url; read date; do echo $(date -d"$date" +%s) $url $title; done; done | sort -n | tail -n4 | cut -d\  -f2- }
 
-svncd() { svn up --depth=immediates "$@" && cd "$1" }
-svnco() { svn up --set-depth=infinity "$@" }
-svnls() { svn up --set-depth=immediates "$@" }
 svndeepen() {
     find "$@" -type d -empty -not \( \
         -wholename '*/tags/*' -o \
@@ -101,7 +102,6 @@ svndeepen() {
         -wholename '*/trunk*' -o \
         -wholename '*/releases/*' \
     \) -exec svn up --set-depth=immediates {} + }
-svntrunk() { find "$@" -name trunk -exec svn up --set-depth=infinity {} + }
 
 
 setopt incappendhistory autocd extendedglob nomatch notify interactivecomments
