@@ -42,20 +42,24 @@ alias cd..="cd .."
 alias clip="xclip -selection clipboard"
 alias encsetup='encfs ~/.encrypted/ ~/secure'
 alias g=git
+alias gb='gradle build'
 alias l="ls -C"
 alias ls="ls --color=auto -C"
 alias more="less" # (More or less.)
 alias rsyncpp='rsync -av --partial --progress'
 alias s="sudo"
+alias sagdup="sudo apt-get dist-upgrade"
 alias sagi="sudo apt-get install"
 alias sagr="sudo apt-get remove"
 alias sagu="sudo apt-get update"
 alias sagup="sudo apt-get upgrade"
-alias sagdup="sudo apt-get dist-upgrade"
 alias sc="tmux attach -d"
+alias setroot="xsetroot -solid grey17"
+alias suspend="dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend }"
 alias sl="ls"
 alias sx="screen -x"
 alias v="vim"
+
 
 arm() { sudo sudo -u debian-tor arm }
 bedword() { printf "$(printf "\\\x%02x\\\x%02x\\\x%02x\\\x%02x" $(($1&0xff)) $((($1>>8)&0xff)) $((($1>>16)&0xff)) $((($1>>24)&0xff)))" }
@@ -67,19 +71,18 @@ editzshrc() { vim ~/.zshrc && source ~/.zshrc }
 gk() { gitk "$@" &disown }
 gka() { gk --all $(git log -g --format="%h" -50) "$@" }
 hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/syslog | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
+idea() { nohup ~/ins/idea/bin/idea.sh "$@" &disown }
 ignore() { for f in "$@"; do echo $f >> .gitignore; done }
 jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] && jar xf $1 $f && jar tf $f && rm $f; done }
 kernel() { make-kpkg --rootcmd fakeroot --append_to_version=-$USER --initrd kernel_image }
 msql() { mysql -u$1 -p$1 -D$1 $2 $3 $4 $5 } # yes, that's terrible
 mt() { mvn clean "$@" && mvn test "$@" }
-alias gb='gradle build'
 nomavennamespace() { sed 's,http://maven.apache.org/[Px][Os][Md]/[^"]*",",g' }
 norprompt() { precmd() {}; unset RPROMPT }
 quotes(){ echo "select concat(quoteid,': < ',nick,'> ',message) from _objectdb_plugins_quote_quoteline where quoteid in (select quoteid from _objectdb_plugins_quote_quoteline where nick='$1');"|mysql -uchoob_scripts -Dchoob|tr -d '[\000-\011]'|perl -pe '$p=$_;$p=~s/:.*//;if($p ne $l){$l=$p;print"\n";}' | sed 1d;}
 sortpom() {  mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId "$@" }
 sparse() { dd if=/dev/zero of=$1 bs=1M count=1 skip=$2 }
 wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git fetch &) > /dev/null }
-
 ++ () {
 	[[ -z $1 ]] && { echo "$0: Compiles and runs a C++ program. usage: $0 filename.cpp" }
 	g++ -std=c++98 -pedantic-errors -Wall -Werror -Wfatal-errors -Wwrite-strings -ftrapv -fno-merge-constants -fno-nonansi-builtins -fno-gnu-keywords -fstrict-aliasing "$1" -o"$(basename "$1" .cpp)" && "$(dirname "$1")"/"$(basename "$1" .cpp)"
@@ -99,6 +102,7 @@ svndeepen() {
         -wholename '*/releases/*' \
     \) -exec svn up --set-depth=immediates {} + }
 svntrunk() { find "$@" -name trunk -exec svn up --set-depth=infinity {} + }
+
 
 setopt incappendhistory autocd extendedglob nomatch notify interactivecomments
 
@@ -171,7 +175,4 @@ fi
 
 echo -ne '\e%G\e[?47h\e%G\e[?47l'
 
-suspend() { dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend }
-idea() { nohup ~/ins/idea/bin/idea.sh &disown }
-setroot() { xsetroot -solid grey17 }
 
