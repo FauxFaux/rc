@@ -59,7 +59,7 @@ alias sc="tmux attach -d"
 alias setroot="xsetroot -solid grey17"
 alias sl="ls"
 alias sortpom="mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId"
-alias suspend="dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend }"
+alias suspend="dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias sx="screen -x"
 alias v="vim"
 
