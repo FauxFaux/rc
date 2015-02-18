@@ -130,8 +130,8 @@ bindkey '\e[A' history-beginning-search-backward-end
 bindkey '\e[B' history-beginning-search-forward-end
 
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=5000
+SAVEHIST=5000
 
 #[ Exports ]###################################################################
 export EDITOR="vim"
