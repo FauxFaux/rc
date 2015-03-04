@@ -18,10 +18,7 @@
 	url = git://github.com/uarun/vim-protobuf.git
 [submodule "z"]
 	path = z
-	url = git@github.com:rupa/z.git
+	url = git://github.com/rupa/z.git
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = git://github.com/jpalardy/vim-slime.git
-[submodule ".vim/bundle/vim-golang"]
-	path = .vim/bundle/vim-golang
-	url = git@github.com:jnwhiteh/vim-golang.git
