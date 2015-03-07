@@ -16,6 +16,7 @@ sudo apt-get install \
 	openssh-server \
 	openssh-client \
 	fail2ban \
+	keychain \
 	ncdu \
 	sudo \
 	tmux \
@@ -49,6 +50,7 @@ sudo apt-get install \
 	gzip \
 	inotify-tools \
 	iotop \
+	jq \
 	libxml2-utils \
 	links \
 	links2 \
@@ -57,6 +59,7 @@ sudo apt-get install \
 	lzma \
 	md5deep \
 	molly-guard \
+	mosh \
 	moreutils \
 	nano \
 	netcat6 \
