@@ -9,6 +9,8 @@ for f in rc/.*; do
 	ln -s "$f"
 done
 
+rc/i3status.conf.sh > .i3status.conf
+
 # please let me actually use the machine
 sudo apt-get install \
 	connect-proxy \

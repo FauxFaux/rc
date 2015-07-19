@@ -1,13 +1,24 @@
+#!/bin/zsh
 
+cat <<E
 general {
     colors = true
     interval = 5
     output_format = "i3bar"
 }
+E
 
-order += "disk /home/faux"
-order += "disk /"
-order += "ethernet eth0"
+if [ "$(df -P / /home/faux | sed 1d | awk '{print $1}' | sort -u | wc -l)" -gt 1 ]; then
+    echo 'order += "disk /home/faux"'
+fi
+
+echo 'order += "disk /"'
+
+eth=$(ip r | grep -o 'dev [^ ]*' | cut -d' ' -f2 | sort -u | fgrep -v lxcbr | fgrep -v wlan)
+
+echo 'order += "ethernet '$eth\"
+
+cat <<E
 order += "wireless wlan0"
 order += "ipv6"
 order += "cpu_temperature 0"
@@ -19,8 +30,11 @@ wireless wlan0 {
     format_up = "W: (%quality at %essid, %bitrate) %ip"
     format_down = "W: down"
 }
+E
 
-ethernet eth0 {
+echo "ethernet $eth {"
+
+cat <<E
     format_up = "E: %ip"
     format_down = "E: down"
 }
@@ -41,7 +55,11 @@ load {
 
 cpu_temperature 0 {
     format = "%degrees°C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+E
+
+echo 'path = "'$(echo /sys/devices/platform/coretemp.0/hwmon/hwmon*(1)/temp1_input)\"
+
+cat <<E
 }
 
 disk "/" {
@@ -62,3 +80,4 @@ volume master {
     mixer = "Master"
     mixer_idx = 0
 }
+E
