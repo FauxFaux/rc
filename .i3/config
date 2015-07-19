@@ -111,5 +111,5 @@ mode "resize" {
 bindsym $mod+j mode "resize"
 
 bar {
-    status_command i3status
+    status_command i3status | ~/rc/i3ext/main.py
 }
