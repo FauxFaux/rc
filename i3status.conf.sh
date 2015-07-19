@@ -18,19 +18,28 @@ eth=$(ip r | grep -o 'dev [^ ]*' | cut -d' ' -f2 | sort -u | fgrep -v lxcbr | fg
 
 echo 'order += "ethernet '$eth\"
 
+wifi=$(iwconfig 2>/dev/null | head -n1 | awk '{print $1}')
+if [ ! -z "$wifi" ]; then
+    echo 'order += "wireless '$wifi\"
+fi
+
 cat <<E
-order += "wireless wlan0"
-order += "ipv6"
 order += "cpu_temperature 0"
 order += "load"
 order += "tztime local"
 order += "volume master"
+E
 
-wireless wlan0 {
+if [ ! -z "$wifi" ]; then
+
+    echo 'wireless '$wifi' {'
+
+cat <<E
     format_up = "W: (%quality at %essid, %bitrate) %ip"
     format_down = "W: down"
 }
 E
+fi
 
 echo "ethernet $eth {"
 
