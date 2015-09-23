@@ -3,7 +3,7 @@
 ## Get the ability to type:
 
 ```bash
-su -c 'apt-get install sudo git zsh tmux connect-proxy; adduser faux sudo; chsh -s /bin/zsh'
+su -c 'apt-get update && apt-get upgrade -y; apt-get install sudo git zsh tmux connect-proxy; adduser faux sudo; chsh -s /bin/zsh'
 chsh -s /bin/zsh
 ```
 
