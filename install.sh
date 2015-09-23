@@ -1,12 +1,24 @@
 #!/bin/sh
 set -e
 
-# get some dotfiles into place
+# Copy the standard dot files into the correct place
+RCPATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 for f in rc/.*; do
-	B=$(basename "$f")
-	[ "$B" = "." -o "$B" = ".." -o "$B" = ".git" -o "$B" = ".gitmodules" -o "$B" = ".gitignore" ] && continue
-	[ -L "$B" ] && rm "$B"
-	ln -s "$f"
+
+  B=$(basename "$f")
+  [ "$B" = "." -o "$B" = ".." -o "$B" = ".git" -o "$B" = ".gitmodules" -o "$B" = ".gitignore" ] && continue
+  [ -L "$B" ] && rm "$B"
+  
+  SRC=$(readlink -f "$f")
+  DEST=$(pwd)/$(basename "$f")
+  
+  # Ensure that the symbolic links are cleaned up
+  [ -L "$B" ] && rm "$B"
+
+  # Move any non-symbolic links to the 'backup' file
+  [ -e "$DEST" ] && mv "$DEST" "$DEST.backup"
+
+  ln -s "$SRC" "$DEST"
 done
 
 rc/i3status.conf.sh > .i3status.conf
@@ -52,6 +64,8 @@ sudo apt-get install \
 	gzip \
 	inotify-tools \
 	iotop \
+	iptables-persistent \
+	htop \
 	jq \
 	libxml2-utils \
 	links \
