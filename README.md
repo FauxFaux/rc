@@ -1,4 +1,4 @@
-# Installing on a clean Debian machine:
+# Installing on a clean Debian or Ubuntu machine:
 
 ## Get the ability to type:
 
@@ -24,3 +24,16 @@ git clone --recursive git@goeswhere.com:rc.git
 tmux
 rc/install.sh
 ```
+
+### Other things that this doesn't setup:
+
+ * `/etc/default/grub` remove `quiet` and `splash`.
+ * `im-config` -> `xim`, not `ibus` (which doesn't do colemauk properly)
+ * `/usr/share/xsessions/xsession.desktop`:
+
+```ini
+[Desktop Entry]
+Name=Xsession
+Exec=/etc/X11/Xsession
+```
+
