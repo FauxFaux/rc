@@ -29,6 +29,10 @@ rc/install.sh
 
  * `/etc/default/grub` remove `quiet` and `splash`.
  * `im-config` -> `xim`, not `ibus` (which doesn't do colemauk properly)
+ * Stop Gnome apps prefering Firefox even if update-alternatives points elsewhere:
+`for m in x-scheme-handler/http{,s} text/html; do gvfs-mime --set $m chromium-browser.desktop; done`
+ * [Fixup word characters for gnome-terminal](https://bugs.launchpad.net/ubuntu/+source/gnome-terminal/+bug/1401207/comments/8),
+which has forgotten how to support urls.
  * `/usr/share/xsessions/xsession.desktop`:
 
 ```ini
