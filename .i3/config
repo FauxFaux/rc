@@ -113,3 +113,11 @@ bindsym $mod+j mode "resize"
 bar {
     status_command i3status | ~/rc/i3ext/main.py
 }
+
+exec --no-startup-id i3-msg 'workspace 1; exec /home/faux/ins/idea/bin/idea.sh'
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/x-terminal-emulator'
+exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/chromium-browser'
+exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/x-terminal-emulator'
+exec --no-startup-id i3-msg 'workspace 7; exec /home/faux/bin/deadbeef'
+exec --no-startup-id i3-msg 'workspace 9; exec /usr/bin/steam'
+
