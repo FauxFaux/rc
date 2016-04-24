@@ -64,7 +64,6 @@ sudo apt-get install \
 	gzip \
 	inotify-tools \
 	iotop \
-	iptables-persistent \
 	htop \
 	jq \
 	libxml2-utils \
@@ -78,7 +77,6 @@ sudo apt-get install \
 	mosh \
 	moreutils \
 	nano \
-	netcat6 \
 	netcat-traditional \
 	nmap \
 	ntp \
