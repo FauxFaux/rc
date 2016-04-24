@@ -1,4 +1,4 @@
-subscribe https-everywhere@eff.org git@vger.kernel.org openssh-unix-dev@mindrot.org zsh-workers@zsh.org
+subscribe https-everywhere@eff.org git@vger.kernel.org openssh-unix-dev@mindrot.org zsh-workers@zsh.org debian-java@lists.debian.org
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir =~/.mutt/cache/bodies
 set certificate_file =~/.mutt/certificates
