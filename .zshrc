@@ -155,7 +155,8 @@ export REPORTTIME=10
 export LESS='-i -w -q -z-4 -g -M -X -F -R -P%t?f%f:stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
 #export LESS="-cgiFx4M"
 export PAGER=less
-export PATH="$HOME/bin/:$HOME/.cabal/bin:$HOME/usr/bin:$PATH"
+export GOPATH=$HOME/gocode
+export PATH="$HOME/bin/:$HOME/.cabal/bin:$HOME/usr/bin:$PATH:$GOPATH/bin"
 export PYTHONPATH=$PYTHONPATH:$HOME/lib/python
 export LD_LIBRARY_PATH=~/lib
 
