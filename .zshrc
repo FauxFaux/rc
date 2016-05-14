@@ -168,6 +168,10 @@ bindkey "^[[3~" delete-char
 bindkey -M vicmd '^r' history-incremental-search-backward
 bindkey -M viins '^r' history-incremental-search-backward
 
+# ctrl+left and right arrow
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
