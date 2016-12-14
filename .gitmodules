@@ -28,3 +28,9 @@
 [submodule ".vim/bundle/neocomplete.vim"]
 	path = .vim/bundle/neocomplete.vim
 	url = https://github.com/shougo/neocomplete.vim
+[submodule "urxvt-ext/urxvt-font-size"]
+	path = urxvt-ext/urxvt-font-size
+	url = https://github.com/majutsushi/urxvt-font-size
+[submodule ".vim/bundle/typescript-vim"]
+	path = .vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
