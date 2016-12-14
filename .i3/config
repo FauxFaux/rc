@@ -4,6 +4,8 @@ set $mod Mod4
 
 font pango:DejaVu Sans Mono 10
 
+hide_edge_borders both
+
 floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
 
@@ -68,7 +70,7 @@ bindsym $mod+z move scratchpad
 bindsym $mod+Shift+z scratchpad show
 
 bindsym $mod+a focus parent
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
