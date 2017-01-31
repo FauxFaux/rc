@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if PID=$(pgrep --oldest mplayer); then
     if [ "T" = "$(cut -d' ' -f 3 /proc/${PID}/stat)" ]; then
