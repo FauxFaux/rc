@@ -120,6 +120,6 @@ exec --no-startup-id i3-msg 'workspace 1; exec /home/faux/ins/idea/bin/idea.sh'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/x-terminal-emulator'
 exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/google-chrome'
 exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/x-terminal-emulator'
-exec --no-startup-id i3-msg 'workspace 7; exec /home/faux/bin/deadbeef'
+exec --no-startup-id i3-msg 'workspace 7; exec /usr/bin/spotify'
 exec --no-startup-id i3-msg 'workspace 9; exec /usr/bin/steam'
 
