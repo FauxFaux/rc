@@ -109,11 +109,6 @@ svndeepen() {
 
 setopt incappendhistory autocd extendedglob nomatch notify interactivecomments
 
-fpath=(~/rc/zsh-git-escape-magic $fpath)
-
-autoload -Uz git-escape-magic
-git-escape-magic
-
 autoload -Uz compinit
 compinit
 
