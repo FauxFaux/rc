@@ -1,4 +1,5 @@
 #!/bin/zsh
+set -eu
 
 cat <<E
 general {
@@ -14,7 +15,8 @@ fi
 
 echo 'order += "disk /"'
 
-eth=$(ip r | grep -o 'dev [^ ]*' | cut -d' ' -f2 | sort -u | fgrep -v lxcbr | fgrep -v wlan)
+eth=$(ip r | grep -o 'dev [^ ]*' | cut -d' ' -f2 | sort -u |
+    fgrep -v lxcbr | fgrep -v wlan | fgrep -v docker)
 
 echo 'order += "ethernet '$eth\"
 
@@ -66,7 +68,7 @@ cpu_temperature 0 {
     format = "%degrees°C"
 E
 
-echo 'path = "'$(echo /sys/devices/platform/coretemp.0/hwmon/hwmon*(1)/temp1_input)\"
+echo 'path = "'$(echo /sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input)\"
 
 cat <<E
 }
