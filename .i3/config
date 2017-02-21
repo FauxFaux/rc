@@ -21,14 +21,14 @@ bindsym $mod+shift+l exec "xset dpms 590"
 bindsym $mod+o move workspace to output left
 
 # normal computers
-bindsym XF86AudioRaiseVolume exec amixer set Master 3+
-bindsym XF86AudioLowerVolume exec amixer set Master 3-
+bindsym XF86AudioRaiseVolume exec pasane 3+
+bindsym XF86AudioLowerVolume exec pasane 3-
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 bindsym XF86AudioPlay exec ~/rc/playpause.sh
 
 # ms7k
-bindsym $mod+F4 exec amixer -D pulse set Master 3%+
-bindsym $mod+F3 exec amixer -D pulse set Master 3%-
+bindsym $mod+F4 exec pasane 3+
+bindsym $mod+F3 exec pasane 3-
 bindsym $mod+F2 exec amixer -D pulse sset Master toggle
 bindsym $mod+F1 exec ~/rc/playpause.sh
 
