@@ -58,7 +58,6 @@ sudo apt-get install \
 	dnsutils \
 	dos2unix \
 	e2fsprogs \
-	encfs \
 	etckeeper \
 	gnupg \
 	gzip \
