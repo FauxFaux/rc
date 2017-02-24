@@ -123,6 +123,5 @@ sudo apt-get install \
 sudo apt-get install \
     gedit \
     gnome-terminal \
-    mplayer \
-    mpd
+    mpv
 
