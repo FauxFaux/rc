@@ -15,8 +15,11 @@ fi
 
 echo 'order += "disk /"'
 
-eth=$(ip r | grep -o 'dev [^ ]*' | cut -d' ' -f2 | sort -u |
-    fgrep -v lxcbr | fgrep -v wlan | fgrep -v docker)
+devices() {
+    ip l | sed -En 's/^[0-9]+: (\w+):.*/\1/p'
+}
+
+eth=$(devices | egrep '^e')
 
 echo 'order += "ethernet '$eth\"
 
@@ -92,3 +95,16 @@ volume master {
     mixer_idx = 0
 }
 E
+
+if laptop-detect; then
+    cat <<E
+order += "battery 0"
+battery 0 {
+    format = "%status %percentage %remaining %consumption"
+    integer_battery_capacity = true
+    last_full_capacity = true
+    threshold_type = "time"
+    low_threshold = "30"
+}
+E
+fi
