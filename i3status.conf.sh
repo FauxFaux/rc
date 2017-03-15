@@ -13,6 +13,10 @@ if [ "$(df -P / /home/faux | sed 1d | awk '{print $1}' | sort -u | wc -l)" -gt 1
     echo 'order += "disk /home/faux"'
 fi
 
+if laptop-detect; then
+   echo 'order += "battery 0"'
+fi
+
 echo 'order += "disk /"'
 
 devices() {
@@ -40,7 +44,7 @@ if [ ! -z "$wifi" ]; then
     echo 'wireless '$wifi' {'
 
 cat <<E
-    format_up = "W: (%quality at %essid, %bitrate) %ip"
+    format_up = "%quality %essid %ip"
     format_down = "W: down"
 }
 E
@@ -49,14 +53,8 @@ fi
 echo "ethernet $eth {"
 
 cat <<E
-    format_up = "E: %ip"
+    format_up = "%ip"
     format_down = "E: down"
-}
-
-battery 0 {
-    format = "%status %percentage %remaining %emptytime"
-    path = "/sys/class/power_supply/BAT%d/uevent"
-    low_threshold = 10
 }
 
 tztime local {
@@ -98,7 +96,6 @@ E
 
 if laptop-detect; then
     cat <<E
-order += "battery 0"
 battery 0 {
     format = "%status %percentage %remaining %consumption"
     integer_battery_capacity = true
