@@ -68,7 +68,6 @@ alias v="vim"
 
 bedword() { printf "$(printf "\\\x%02x\\\x%02x\\\x%02x\\\x%02x" $(($1&0xff)) $((($1>>8)&0xff)) $((($1>>16)&0xff)) $((($1>>24)&0xff)))" }
 ccache-env() { export PATH=/usr/lib/ccache:$PATH CC='ccache gcc' CXX='ccache g++' }
-cdt () { BASE=/var/tmp/$LOGNAME$(($(date +%y%m%d))); i=0; while [ -e $BASE.$i ] || ! mkdir $BASE.$i; do i=$((i+1)); done; cd $BASE.$i }
 decompressjar() { MWD=$(pwd) && DIR=$(mktemp -d) && (cd $DIR && jar xf $MWD/$1) && rm $1 && (cd $DIR && jar 0cf $MWD/$1 .) && rm -rf $DIR; }
 decompressjarstream() { DIR=$(mktemp -d) && (cd $DIR && jar x && jar 0c .) && rm -rf $DIR; }
 deepkeys() { curl 'http://pgp.cs.uu.nl/mk_path.cgi?FROM=A482EE24&TO='$1'&PATHS=trust+paths' | egrep -o '<SMALL>[A-F0-9]{8}</SMALL>' | perl -ne 's#</?SMALL>##g; print' | sort | uniq | xargs gpg --recv-keys }
@@ -96,6 +95,24 @@ wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git f
 	[[ -z $1 ]] && { echo "$0: Compiles and runs a C++ program. usage: $0 filename.cpp" }
 	g++ -std=c++98 -pedantic-errors -Wall -Werror -Wfatal-errors -Wwrite-strings -ftrapv -fno-merge-constants -fno-nonansi-builtins -fno-gnu-keywords -fstrict-aliasing "$1" -o"$(basename "$1" .cpp)" && "$(dirname "$1")"/"$(basename "$1" .cpp)"
 }
+
+
+cdt () {
+    L=~/.cache/words
+    [ -f $L ] || (
+        </usr/share/dict/words LANG=C egrep '^[a-z]{4,8}$' | egrep -v 'ing$|ed$|s$' > $L
+    )
+    BASE=/var/tmp/$LOGNAME$(date +%y%m%d)
+    while true; do
+        w=$(shuf -n1 $L)
+        if ! [ -e $BASE.$w ]; then
+            mkdir $BASE.$w
+            break
+        fi
+    done
+    cd $BASE.$w
+}
+
 
 svndeepen() {
     find "$@" -type d -empty -not \( \
