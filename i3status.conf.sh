@@ -13,7 +13,14 @@ if [ "$(df -P / /home/faux | sed 1d | awk '{print $1}' | sort -u | wc -l)" -gt 1
     echo 'order += "disk /home/faux"'
 fi
 
-if laptop-detect; then
+LAPTOP=0
+if [ -e /usr/sbin/laptop-detect ]; then
+    if /usr/sbin/laptop-detect; then
+        LAPTOP=1
+    fi
+fi
+
+if [ $LAPTOP ]; then
    echo 'order += "battery 0"'
 fi
 
@@ -94,7 +101,7 @@ volume master {
 }
 E
 
-if laptop-detect; then
+if [ $LAPTOP ]; then
     cat <<E
 battery 0 {
     format = "%status %percentage %remaining %consumption"
