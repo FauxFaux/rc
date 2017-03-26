@@ -30,9 +30,11 @@ devices() {
     ip l | sed -En 's/^[0-9]+: (\w+):.*/\1/p'
 }
 
-eth=$(devices | egrep '^e')
+eth=$(devices | egrep '^e' || true)
 
-echo 'order += "ethernet '$eth\"
+if ! [ -z "$eth" ]; then
+    echo 'order += "ethernet '$eth\"
+fi
 
 wifi=$(iwconfig 2>/dev/null | head -n1 | awk '{print $1}')
 if [ ! -z "$wifi" ]; then
