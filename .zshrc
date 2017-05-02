@@ -95,15 +95,18 @@ wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git f
 	g++ -std=c++98 -pedantic-errors -Wall -Werror -Wfatal-errors -Wwrite-strings -ftrapv -fno-merge-constants -fno-nonansi-builtins -fno-gnu-keywords -fstrict-aliasing "$1" -o"$(basename "$1" .cpp)" && "$(dirname "$1")"/"$(basename "$1" .cpp)"
 }
 
-
-cdt () {
+rword() {
     L=~/.cache/words
     [ -f $L ] || (
         </usr/share/dict/words LANG=C egrep '^[a-z]{4,8}$' | egrep -v 'ing$|ed$|s$' > $L
     )
+    shuf -n1 $L
+}
+
+cdt () {
     BASE=/var/tmp/$LOGNAME$(date +%y%m%d)
     while true; do
-        w=$(shuf -n1 $L)
+        w=$(rword)
         if ! [ -e $BASE.$w ]; then
             mkdir $BASE.$w
             break
