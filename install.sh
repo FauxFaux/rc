@@ -78,7 +78,6 @@ sudo apt-get install \
 	nano \
 	netcat-traditional \
 	nmap \
-	ntp \
 	pbzip2 \
 	pwgen \
 	pv \
