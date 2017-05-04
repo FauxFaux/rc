@@ -5,13 +5,15 @@ set certificate_file =~/.mutt/certificates
 set envelope_from="yes"
 set edit_headers="yes"
 
+# mail arrives in ~/Maildir. Everything else is a subdir ("+" means "relative to $folder").
+
 set mbox_type=Maildir
 set folder="~/Maildir"
 set mask="!^\\.[^.]"
 set mbox="~/Maildir"
 set record="+.Sent"
 set postponed="+.Drafts"
-set spoolfile="~/Maildir"
+set spoolfile="+.unsorted"
 
 mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
 
