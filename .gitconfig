@@ -46,13 +46,13 @@
 	status = auto
 [rebase]
 	autosquash = true
-[url "git@goeswhere.com:"]
-	insteadOf = "reg:"
-[url "git@github.com:"]
+[url "https://github.com/"]
 	insteadOf = "gh:"
 	insteadOf = "github:"
-[url "git@github.com:FauxFaux/"]
+[url "https://github.com/FauxFaux/"]
 	insteadOf = "ghf:"
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
 [push]
 	default = tracking
 [core "include"]
