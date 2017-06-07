@@ -1,6 +1,7 @@
 [user]
 	name = Chris West (Faux)
 	email = git@goeswhere.com
+	signingKey = 408AE4F14EA733EF126582C1B195E1C4779BA9B2
 [core]
 	logAllRefUpdates = on
 [alias]
@@ -60,3 +61,5 @@
 
 [pull]
 	rebase = true
+[commit]
+	gpgsign = true
