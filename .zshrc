@@ -67,7 +67,7 @@ alias sx="screen -x"
 alias v="vim"
 
 bedword() { printf "$(printf "\\\x%02x\\\x%02x\\\x%02x\\\x%02x" $(($1&0xff)) $((($1>>8)&0xff)) $((($1>>16)&0xff)) $((($1>>24)&0xff)))" }
-cargo-up() { nice cargo update && nice cargo build --all && nice cargo build --release --all && nice cargo test --all }
+cargo-up() { nice cargo update && nice cargo build --all && nice cargo check && nice cargo build --release --all && nice cargo test --all }
 ccache-env() { export PATH=/usr/lib/ccache:$PATH CC='ccache gcc' CXX='ccache g++' }
 decompressjar() { MWD=$(pwd) && DIR=$(mktemp -d) && (cd $DIR && jar xf $MWD/$1) && rm $1 && (cd $DIR && jar 0cf $MWD/$1 .) && rm -rf $DIR; }
 decompressjarstream() { DIR=$(mktemp -d) && (cd $DIR && jar x && jar 0c .) && rm -rf $DIR; }
