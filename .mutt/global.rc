@@ -22,3 +22,8 @@ macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
 
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+        "mark all new as read"
+
