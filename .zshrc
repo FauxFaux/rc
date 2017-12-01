@@ -45,6 +45,7 @@ alias acsno="apt-cache search --names-only"
 alias arm="sudo sudo -u debian-tor arm"
 alias cd..="cd .."
 alias clip="xclip -selection clipboard"
+alias cre="cargo run --example"
 alias encsetup='encfs ~/.encrypted/ ~/secure'
 alias g=git
 alias gb='gradle build'
