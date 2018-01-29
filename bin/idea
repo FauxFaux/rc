@@ -1,0 +1,4 @@
+#!/bin/zsh
+set -eu
+nohup ~/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-*/*/bin/idea.sh "$@" &disown
+
