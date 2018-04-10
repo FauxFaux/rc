@@ -20,7 +20,7 @@ if [ -e /usr/sbin/laptop-detect ]; then
     fi
 fi
 
-if [ $LAPTOP ]; then
+if [ $LAPTOP -eq 1 ]; then
    echo 'order += "battery 0"'
 fi
 
@@ -108,7 +108,7 @@ volume master {
 }
 E
 
-if [ $LAPTOP ]; then
+if [ $LAPTOP -eq 1 ]; then
     cat <<E
 battery 0 {
     format = "%status %percentage %remaining %consumption"
