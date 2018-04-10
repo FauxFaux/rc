@@ -44,6 +44,7 @@ fi
 cat <<E
 order += "cpu_temperature 0"
 order += "load"
+order += "tztime day"
 order += "tztime local"
 order += "volume master"
 E
@@ -64,6 +65,10 @@ echo "ethernet $eth {"
 cat <<E
     format_up = "%ip"
     format_down = "E: down"
+}
+
+tztime day {
+    format = "%a"
 }
 
 tztime local {
