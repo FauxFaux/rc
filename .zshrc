@@ -174,7 +174,7 @@ export LESS='-i -w -q -z-4 -g -M -X -F -R -P%t?f%f:stdin .?pb%pb\%:?lbLine %lb:?
 export PAGER=less
 export GOPATH=$HOME/go
 export PATH="$HOME/bin/:$HOME/.cabal/bin:$HOME/usr/bin:$PATH:$GOPATH/bin"
-export PYTHONPATH=$PYTHONPATH:$HOME/lib/python3.6/site-packages:$HOME/lib/python2.7/site-packages:$HOME/lib/python
+export PYTHONPATH=$PYTHONPATH:$HOME/lib/python3.6/site-packages:$HOME/lib/python2.7/site-packages:$HOME/lib/python2.7/dist-packages:$HOME/lib/python
 export LD_LIBRARY_PATH=~/lib
 
 bindkey "^[[1~" beginning-of-line
