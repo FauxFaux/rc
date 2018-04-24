@@ -33,6 +33,9 @@ rc/install.sh
 `for m in x-scheme-handler/http{,s} text/html; do gvfs-mime --set $m chromium-browser.desktop; done`
  * [Fixup word characters for gnome-terminal](https://bugs.launchpad.net/ubuntu/+source/gnome-terminal/+bug/1401207/comments/8),
 which has forgotten how to support urls.
+ * Consider `kernel.sysrq = 1` in `/etc/sysctl.d/10-magic-sysrq.conf`.
+ * Ensure vconsoles (ctrl+alt+f2) are enabled; `NAutoVTs` in `logind.conf`
+   or `ACTIVE_CONSOLES` in `/etc/default/console-setup`.
  * `/usr/share/xsessions/xsession.desktop`:
 
 ```ini
