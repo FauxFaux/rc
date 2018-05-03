@@ -25,6 +25,7 @@ bindsym XF86AudioRaiseVolume exec pasane 3+
 bindsym XF86AudioLowerVolume exec pasane 3-
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 bindsym XF86AudioPlay exec ~/rc/playpause.sh
+bindsym XF86AudioNext exec ~/rc/playpause.sh next
 
 # ms7k
 bindsym $mod+F4 exec pasane 3+
@@ -105,5 +106,5 @@ bar {
 exec --no-startup-id i3-msg 'workspace 1; exec /home/faux/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox --minimize'
 exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/google-chrome'
 exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/x-terminal-emulator'
-exec --no-startup-id i3-msg 'workspace 7; exec /usr/bin/spotify'
+exec --no-startup-id i3-msg 'workspace 7; exec /usr/bin/snap run spotify'
 
