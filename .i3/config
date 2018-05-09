@@ -26,6 +26,7 @@ bindsym XF86AudioLowerVolume exec pasane 3-
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 bindsym XF86AudioPlay exec ~/rc/playpause.sh
 bindsym XF86AudioNext exec ~/rc/playpause.sh next
+bindsym XF86AudioPrev exec ~/rc/playpause.sh prev
 
 # ms7k
 bindsym $mod+F4 exec pasane 3+

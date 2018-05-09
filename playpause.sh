@@ -5,6 +5,8 @@ if pgrep deadbeef; then
 else
     if [ "$1" = "next" ]; then
         action=Next
+    elif [ "$1" = "prev" ]; then
+        action=Previous
     else
         action=PlayPause
     fi
