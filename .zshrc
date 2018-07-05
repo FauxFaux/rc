@@ -76,6 +76,7 @@ deepkeys() { curl 'http://pgp.cs.uu.nl/mk_path.cgi?FROM=A482EE24&TO='$1'&PATHS=t
 editzshrc() { vim ~/.zshrc && source ~/.zshrc }
 gk() { gitk "$@" &disown }
 gka() { gk --all $(git log -g --format="%h" -50) "$@" }
+ghfc() { git clone --recursive https://github.com/FauxFaux/$1 }
 hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/syslog | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
 ignore() { for f in "$@"; do echo $f >> .gitignore; done }
 jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] && jar xf $1 $f && jar tf $f && rm $f; done }
