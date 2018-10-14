@@ -20,7 +20,7 @@ fi
 ### # log out, log back in (with agent forwarding)
 
 ```bash
-git clone --recursive git@github.com:FauxFaux/rc
+git clone --recursive https://github.com/FauxFaux/rc
 tmux
 rc/install.sh
 ```
