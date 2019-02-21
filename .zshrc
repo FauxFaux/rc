@@ -198,8 +198,7 @@ if [ -f ~/.zshlocal ]; then
 	. ~/.zshlocal
 fi
 
-. ~/rc/z/z.sh
+. '/home/faux/.local/share/zrs/z.sh'
 
 echo -ne '\e%G\e[?47h\e%G\e[?47l'
-
 
