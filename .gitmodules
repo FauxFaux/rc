@@ -3,19 +3,19 @@
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule ".vim/bundle/vim-sensible"]
 	path = .vim/bundle/vim-sensible
-	url = git://github.com/tpope/vim-sensible.git
+	url = https://github.com/tpope/vim-sensible.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/vim-localvimrc"]
 	path = .vim/bundle/vim-localvimrc
-	url = git://github.com/embear/vim-localvimrc.git
+	url = https://github.com/embear/vim-localvimrc.git
 [submodule ".vim/bundle/vim-protobuf"]
 	path = .vim/bundle/vim-protobuf
-	url = git://github.com/uarun/vim-protobuf.git
+	url = https://github.com/uarun/vim-protobuf.git
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
-	url = git://github.com/jpalardy/vim-slime.git
+	url = https://github.com/jpalardy/vim-slime.git
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
