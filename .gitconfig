@@ -55,7 +55,7 @@
 [url "git@github.com:"]
 	pushInsteadOf = "https://github.com/"
 [push]
-	default = tracking
+	default = current
 [core "include"]
 	path = ~/.gitconfig-local
 
