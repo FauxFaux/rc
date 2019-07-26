@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/ale"]
 	path = .vim/bundle/ale
 	url = https://github.com/w0rp/ale
+[submodule "rofimoji"]
+	path = rofimoji
+	url = https://github.com/fdw/rofimoji

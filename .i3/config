@@ -17,6 +17,7 @@ bindsym $mod+l exec "xautolock -locknow"
 bindsym $mod+ctrl+shift+l exec "xautolock -locknow && sudo pm-suspend"
 bindsym $mod+ctrl+l exec "xset dpms 10"
 bindsym $mod+shift+l exec "xset dpms 590"
+bindsym $mod+e exec ~/rc/rofimoji/rofimoji.py
 
 bindsym $mod+o move workspace to output left
 

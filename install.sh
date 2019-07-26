@@ -115,6 +115,8 @@ sudo apt-get install \
     alsa-utils \
     dbus-x11 \
     i3 \
+    rofi \
+    xdotool \
     network-manager \
     xautolock \
     xorg
