@@ -22,8 +22,8 @@ bindsym $mod+e exec ~/rc/rofimoji/rofimoji.py
 bindsym $mod+o move workspace to output left
 
 # normal computers
-bindsym XF86AudioRaiseVolume exec pasane 3+
-bindsym XF86AudioLowerVolume exec pasane 3-
+bindsym XF86AudioRaiseVolume exec ~/bin/pasane 3+
+bindsym XF86AudioLowerVolume exec ~/bin/pasane 3-
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 bindsym XF86AudioPlay exec ~/rc/playpause.sh
 bindsym XF86AudioNext exec ~/rc/playpause.sh next

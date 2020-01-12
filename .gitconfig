@@ -10,10 +10,15 @@
 	co = checkout
 	fa = fetch --all
 	fe = fetch
+	feob = "fetch origin +refs/heads/*:refs/heads/* --prune"
 	rc = rebase --continue
 	rs = rebase --skip
 	ri = rebase --interactive
 	ra = rebase --abort
+	rem = rebase origin/master
+	rim = rebase --interactive origin/master
+	rer = rebase origin/REMOTE_HEAD
+	rir = rebase --interactive origin/REMOTE_HEAD
 	sl = stash list
 	st = status
 	d = diff
@@ -24,6 +29,7 @@
 	rh = reset --hard
 	rp = repack -adf
 	pur = pull --rebase
+	pf = push --force-with-lease
 	cam = commit -am
 	fixup = commit --amend -CHEAD
 	mergeback = "!f() { git update-ref refs/heads/master -m \"Force-merging master with current branch $(git symbolic-ref HEAD)\" $(echo \"$1\" | git commit-tree \"HEAD^{tree}\" -p refs/heads/master -p HEAD); git lg master HEAD -4 | cat; }; f"

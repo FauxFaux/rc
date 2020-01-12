@@ -19,3 +19,4 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
+if [ -e /home/faux/.nix-profile/etc/profile.d/nix.sh ]; then . /home/faux/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

@@ -8,4 +8,6 @@ rustup update
 rustup toolchain add "${nightly}"
 rustup default "${nightly}"
 rustup component add clippy
+rustup component add rustfmt
+rustup target add x86_64-unknown-linux-musl
 
