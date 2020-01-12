@@ -34,3 +34,6 @@
 [submodule "rofimoji"]
 	path = rofimoji
 	url = https://github.com/fdw/rofimoji
+[submodule ".vim/bundle/vim-nix"]
+	path = .vim/bundle/vim-nix
+	url = https://github.com/LnL7/vim-nix
