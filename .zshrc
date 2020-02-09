@@ -36,16 +36,12 @@ if [ -e $MY_AUTH_SOCK ]; then
 fi
 
 #[ Aliases ]###################################################################
-alias :q="exit"
-alias :w='echo \"$PWD\" "$RANDOM"L, "$RANDOM"C written'
 alias acp="apt-cache policy"
 alias acs="apt-cache search"
 alias acsh="apt-cache show"
 alias acshs="apt-cache showsrc"
 alias acsno="apt-cache search --names-only"
-alias arm="sudo sudo -u debian-tor arm"
 alias cd..="cd .."
-alias clip="xclip -selection clipboard"
 alias cre="cargo run --example"
 alias encsetup='encfs ~/.encrypted/ ~/secure'
 alias g=git
@@ -54,16 +50,13 @@ alias l="ls -C"
 alias ls="ls --color=auto -C"
 alias more="less" # (More or less.)
 alias nomavennamespace="sed 's,http://maven.apache.org/[Px][Os][Md]/[^\"]*\",\",g'"
-alias rsyncpp='rsync -av --partial --progress'
 alias s="sudo"
 alias saup="sudo apt upgrade"
 alias sai="sudo apt install"
 alias sau="sudo apt update"
 alias sc="tmux attach -d"
-alias setroot="xsetroot -solid grey17"
 alias sl="ls"
 alias sortpom="mvn com.google.code.sortpom:maven-sortpom-plugin:sort -Dsort.nrOfIndentSpace=4 -Dsort.sortPlugins=groupId,artifactId -Dsort.sortDependencies=scope,groupId,artifactId"
-alias suspend="dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias sx="screen -x"
 alias v="vim"
 
@@ -85,8 +78,6 @@ kernel() { make-kpkg --rootcmd fakeroot --append_to_version=-$USER --initrd kern
 msql() { mysql -u$1 -p$1 -D$1 $2 $3 $4 $5 } # yes, that's terrible
 mt() { mvn clean "$@" && mvn test "$@" }
 norprompt() { precmd() {}; unset RPROMPT }
-quotes(){ echo "select concat(quoteid,': < ',nick,'> ',message) from _objectdb_plugins_quote_quoteline where quoteid in (select quoteid from _objectdb_plugins_quote_quoteline where nick='$1');"|mysql -uchoob_scripts -Dchoob|tr -d '[\000-\011]'|perl -pe '$p=$_;$p=~s/:.*//;if($p ne $l){$l=$p;print"\n";}' | sed 1d;}
-rss() { for feed in 'http://probablyfine.co.uk/feed/' 'http://blog.suriar.net/feeds/posts/default?alt=rss'; do curl -s $feed | xqillac 'for $x in //item return (data($x/title),data($x/link),data($x/pubDate))' | while read title; read url; read date; do echo $(date -d"$date" +%s) $url $title; done; done | sort -n | tail -n4 | cut -d\  -f2- }
 sparse() { dd if=/dev/zero of=$1 bs=1M count=1 skip=$2 }
 svncd() { svn up --depth=immediates "$@" && cd "$1" }
 svnco() { svn up --set-depth=infinity "$@" }
