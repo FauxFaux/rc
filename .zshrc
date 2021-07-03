@@ -167,8 +167,9 @@ export LESS='-i -w -q -z-4 -g -M -X -F -R -P%t?f%f:stdin .?pb%pb\%:?lbLine %lb:?
 export PAGER=less
 export GOPATH=$HOME/go
 export PATH="$HOME/bin:$HOME/.cabal/bin:$HOME/usr/bin:$PATH:$GOPATH/bin"
-export PYTHONPATH=$PYTHONPATH:$HOME/lib/python3.7/site-packages:$HOME/lib/python3.6/site-packages:$HOME/lib/python2.7/site-packages:$HOME/lib/python2.7/dist-packages:$HOME/lib/python
+export PYTHONPATH=$PYTHONPATH:$HOME/lib/python3.8/site-packages:$HOME/lib/python3.7/site-packages:$HOME/lib/python2.7/site-packages:$HOME/lib/python2.7/dist-packages:$HOME/lib/python
 export LD_LIBRARY_PATH=~/lib
+export CCACHE_DIR=~/.cache/ccache
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
@@ -190,7 +191,9 @@ if [ -f ~/.zshlocal ]; then
 	. ~/.zshlocal
 fi
 
-. '/home/faux/.local/share/zrs/z.sh'
+if [ -f '/home/faux/.local/share/zrs/z.sh' ]; then
+    . '/home/faux/.local/share/zrs/z.sh'
+fi
 
 echo -ne '\e%G\e[?47h\e%G\e[?47l'
 
