@@ -6,6 +6,7 @@ zstyle :compinstall filename '/home/faux/.zshrc'
 #[ Prompt ]####################################################################
 autoload colors && colors
 
+if true; then
 precmd() {
 	if [[ "$(pwd)" == /smb* ]]; then
 		ref=/smb
@@ -16,6 +17,8 @@ precmd() {
 	RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
 #	printf '\e]82;'$(pwd)'\007'
 }
+RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
+fi
 
 if [ $UID -eq 0 ]; then
 	PROMPT="%{$reset_color$fg_bold[red]%}%n@%B%m%b:%~%# "
@@ -23,7 +26,6 @@ else
 	PROMPT="%{$fg_bold[blue]%}%n@%m%{$reset_color%}:%{$fg[red]%}%~%{$reset_color%}%# "
 fi
 
-RPROMPT="%{$reset_color$fg_bold[grey]%}$ref%{$reset_color%} %(?..%{$fg_bold[red]%}%?%{$reset_color%}) [ %T ]"
 
 MY_AUTH_SOCK=~/.ssh/auth_sock
 # make the ssh agent available at a consistent path, for screen'd shells
@@ -72,6 +74,7 @@ gka() { gk --all $(git log -g --format="%h" -50) "$@" }
 ghfc() { git clone --recursive https://github.com/FauxFaux/$1 }
 hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/syslog | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
 ide() { :|idea "$(pwd)" >/dev/null 2>/dev/null &disown }
+goland() { :|=goland "$(pwd)" >/dev/null 2>/dev/null &disown }
 ignore() { for f in "$@"; do echo $f >> .gitignore; done }
 jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] && jar xf $1 $f && jar tf $f && rm $f; done }
 kernel() { make-kpkg --rootcmd fakeroot --append_to_version=-$USER --initrd kernel_image }
@@ -166,10 +169,11 @@ export LESS='-i -w -q -z-4 -g -M -X -F -R -P%t?f%f:stdin .?pb%pb\%:?lbLine %lb:?
 #export LESS="-cgiFx4M"
 export PAGER=less
 export GOPATH=$HOME/go
-export PATH="$HOME/bin:$HOME/.cabal/bin:$HOME/usr/bin:$PATH:$GOPATH/bin"
+export PATH="$HOME/bin:$HOME/.cache/cargo/bin:$HOME/.cabal/bin:$HOME/usr/bin:$PATH:$GOPATH/bin"
 export PYTHONPATH=$PYTHONPATH:$HOME/lib/python3.8/site-packages:$HOME/lib/python3.7/site-packages:$HOME/lib/python2.7/site-packages:$HOME/lib/python2.7/dist-packages:$HOME/lib/python
 export LD_LIBRARY_PATH=~/lib
 export CCACHE_DIR=~/.cache/ccache
+export CARGO_HOME=~/.cache/cargo
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
@@ -196,4 +200,8 @@ if [ -f '/home/faux/.local/share/zrs/z.sh' ]; then
 fi
 
 echo -ne '\e%G\e[?47h\e%G\e[?47l'
+
+
+# fnm
+export PATH=/home/faux/.fnm:$PATH
 

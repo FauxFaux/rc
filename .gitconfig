@@ -58,6 +58,8 @@
 	insteadOf = "github:"
 [url "https://github.com/FauxFaux/"]
 	insteadOf = "ghf:"
+[url "ssh://git@github.com/snyk/"]
+	insteadOf = https://github.com/snyk/
 [url "git@github.com:"]
 	pushInsteadOf = "https://github.com/"
 [push]
@@ -68,3 +70,5 @@
 [pull]
 	rebase = true
 [commit]
+[init]
+	defaultBranch = main
