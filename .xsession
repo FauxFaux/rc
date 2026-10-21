@@ -1,8 +1,8 @@
 #!/bin/sh
+# hack? shouln't this come from gdm or something?
+# without it, systemctl --user / gnome-terminal won't start
+# export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
 eval $(keychain --eval -q)
-# disable mouse acceleration
-xset m 0 0
-xset dpms 590
-xsetroot -solid grey17
-xautolock -locker 'i3lock -c 303030' &
-exec i3 2>&1 >> ~/.i3.log
+exec sway
+
