@@ -21,6 +21,14 @@ for f in rc/.*; do
   ln -s "$SRC" "$DEST"
 done
 
+# Sway uses an XDG config directory rather than a top-level dotfile.
+mkdir -p "$HOME/.config"
+SRC=$(readlink -f rc/sway)
+DEST="$HOME/.config/sway"
+[ -L "$DEST" ] && rm "$DEST"
+[ -e "$DEST" ] && mv "$DEST" "$DEST.backup"
+ln -s "$SRC" "$DEST"
+
 rc/i3status.conf.sh > .i3status.conf
 
 # please let me actually use the machine
@@ -98,23 +106,14 @@ sudo apt-get install \
 	cmake \
 	fish \
 	flac \
-	ghc \
 	imagemagick \
-	ipython \
-	maven \
-	openjdk-8-jdk \
 	optipng \
-	pyflakes \
 	tidy
-
-for failable in dig cgroup-lite; do
-    sudo apt-get install $failable || true
-done
 
 sudo apt-get install \
     alsa-utils \
     dbus-x11 \
-    i3 \
+    sway \
     rofi \
     xdotool \
     network-manager \
