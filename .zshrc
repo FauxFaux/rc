@@ -74,6 +74,7 @@ gka() { gk --all $(git log -g --format="%h" -50) "$@" }
 ghfc() { git clone --recursive https://github.com/FauxFaux/$1 }
 hometime() { (printf "echo "; fgrep gnome-screensaver-dialog /var/log/syslog | fgrep "[$USER]" | grep "$(date +'%b %e')" | head -n1 | awk '{print $3}' | sed 's/^0/ /;s/../$((&+8))/') | sh }
 ide() { :|idea "$(pwd)" >/dev/null 2>/dev/null &disown }
+rr() { :|rustrover "$(pwd)" > /dev/null 2> /dev/null &disown }
 goland() { :|=goland "$(pwd)" >/dev/null 2>/dev/null &disown }
 ignore() { for f in "$@"; do echo $f >> .gitignore; done }
 jarr() { jar tf $1 | tee o && grep '[wj]ar$' o | while read f; do [ ! -e $f ] && jar xf $1 $f && jar tf $f && rm $f; done }
@@ -87,6 +88,10 @@ svnco() { svn up --set-depth=infinity "$@" }
 svnls() { svn up --set-depth=immediates "$@" }
 svntrunk() { find "$@" -name trunk -exec svn up --set-depth=infinity {} + }
 wu() { (find & git ls-files -s & git log -5 & mvn pre-clean & git status & git fetch &) > /dev/null }
+cal() { ncal -b "$@" }
+mpv-drc() { mpv --af="acompressor=ratio=4,loudnorm" "$@" }
+mpv-nightmode() { mpv --af="pan=stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE" "$@" }
+mpv-nightmode-drc() { mpv --af="pan=stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE,loudnorm" "$@" }
 
 ++ () {
 	[[ -z $1 ]] && { echo "$0: Compiles and runs a C++ program. usage: $0 filename.cpp" }
