@@ -8,6 +8,7 @@ hide_edge_borders both
 
 floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
+focus_on_window_activation urgent
 
 # with im-config -> xim, not ibus (which doesn't do colemauk properly)
 bindsym $mod+q exec setxkbmap -v gb
@@ -102,7 +103,7 @@ bindsym $mod+Shift+P restart
 bindsym $mod+Shift+F exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bar {
-    status_command i3status | ~/rc/i3ext/main.py
+    status_command i3status
 }
 
 exec --no-startup-id ibus-daemon -d -r
